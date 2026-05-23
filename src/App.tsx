@@ -1,0 +1,25 @@
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import SnapMonk from './pages/SnapMonk'
+import './index.css'
+
+function App() {
+  return (
+    <HashRouter>
+      <div className="flex flex-col min-h-screen" style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/snapmonk" element={<SnapMonk />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </HashRouter>
+  )
+}
+
+export default App
