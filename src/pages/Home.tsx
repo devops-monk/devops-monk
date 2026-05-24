@@ -20,6 +20,18 @@ const projects = [
     border: 'hover:border-purple-500/60',
   },
   {
+    icon: '🧘',
+    title: 'MonkTab',
+    desc: 'A Momentum-inspired new tab extension for developers. Pomodoro timer, 20+ ambient soundscapes, smart tasks with priority, Focus Mode with ring timer, weather, world clocks, quick bookmarks, and a lo-fi YouTube player — all in one beautiful page.',
+    tags: ['Chrome Extension', 'TypeScript', 'Web Audio API'],
+    links: [
+      { label: 'Learn More', href: '/monktab', internal: true },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/monkTab', internal: false },
+    ],
+    gradient: 'from-violet-600/20 to-purple-600/20',
+    border: 'hover:border-violet-500/60',
+  },
+  {
     icon: '🛠️',
     title: 'MonkKit',
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
@@ -157,7 +169,7 @@ export default function Home() {
                 ⚡ DevOps-Monk
               </div>
               <div className="absolute -top-3 -left-3 bg-[#161b22] border border-purple-500/30 rounded-xl px-3 py-2 text-sm font-semibold text-purple-400 shadow-xl">
-                4+ Projects
+                5+ Projects
               </div>
             </div>
           </div>
@@ -242,7 +254,7 @@ export default function Home() {
                       link.internal ? (
                         <Link
                           key={link.label}
-                          to="/snapmonk"
+                          to={link.href}
                           className="text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors"
                         >
                           {link.label}

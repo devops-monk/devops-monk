@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import SnapMonk from './pages/SnapMonk'
+import MonkTab from './pages/MonkTab'
 import Privacy from './pages/Privacy'
 import './index.css'
 
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/snapmonk" element={<SnapMonk />} />
+            <Route path="/monktab" element={<MonkTab />} />
             <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
