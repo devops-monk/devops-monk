@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 const skills = [
   'Docker', 'Kubernetes', 'AWS', 'Python', 'TypeScript',
   'React', 'CI/CD', 'Linux', 'Terraform', 'Node.js',
+  'Java', 'Spring Boot', 'Testcontainers',
 ]
 
 const projects = [
