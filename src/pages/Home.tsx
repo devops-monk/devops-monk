@@ -112,7 +112,7 @@ export default function Home() {
               </h1>
 
               <p className="text-xl sm:text-2xl text-[#8b949e] font-medium mb-6">
-                DevOps Engineer & Open Source Builder
+                Software Engineer & Open Source Builder
               </p>
 
               <p className="text-[#8b949e] text-lg leading-relaxed max-w-xl mb-8 mx-auto lg:mx-0">
