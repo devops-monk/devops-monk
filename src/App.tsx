@@ -4,6 +4,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import SnapMonk from './pages/SnapMonk'
 import MonkTab from './pages/MonkTab'
+import MonkKit from './pages/MonkKit'
+import ShareMarket from './pages/ShareMarket'
+import DynamicDNS from './pages/DynamicDNS'
 import Privacy from './pages/Privacy'
 import './index.css'
 
@@ -17,6 +20,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/snapmonk" element={<SnapMonk />} />
             <Route path="/monktab" element={<MonkTab />} />
+            <Route path="/monkkit" element={<MonkKit />} />
+            <Route path="/share-market" element={<ShareMarket />} />
+            <Route path="/dynamic-dns" element={<DynamicDNS />} />
             <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
