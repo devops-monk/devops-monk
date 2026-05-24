@@ -35,6 +35,9 @@ export default function Footer() {
             >
               GitHub ↗
             </a>
+            <Link to="/privacy" className="text-[#8b949e] hover:text-[#e6edf3] transition-colors">
+              Privacy Policy
+            </Link>
           </nav>
 
           <p className="text-[#8b949e] text-sm">

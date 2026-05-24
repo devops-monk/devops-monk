@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const features = [
   {
     icon: '📸',
@@ -107,6 +109,11 @@ export default function SnapMonk() {
             >
               View Source on GitHub ↗
             </a>
+          </div>
+          <div className="mt-5">
+            <Link to="/privacy" className="text-sm text-[#8b949e] hover:text-purple-400 transition-colors underline underline-offset-2">
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </section>
