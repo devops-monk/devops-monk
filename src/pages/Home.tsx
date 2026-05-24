@@ -25,6 +25,7 @@ const projects = [
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
     tags: ['Developer Tools', 'CLI', 'Productivity'],
     links: [
+      { label: 'Live App ↗', href: 'https://tools.devops-monk.com/', internal: false },
       { label: 'Read More ↗', href: 'https://blog.devops-monk.com/2026/05/monkkit-developer-tools/', internal: false },
     ],
     gradient: 'from-emerald-600/20 to-teal-600/20',
@@ -36,6 +37,7 @@ const projects = [
     desc: 'A real-time stock market analysis dashboard with intelligent insights, portfolio tracking, technical indicators, and market trend visualisation powered by live data feeds.',
     tags: ['Finance', 'Data', 'Dashboard', 'Python'],
     links: [
+      { label: 'Live App ↗', href: 'https://share.devops-monk.com/', internal: false },
       { label: 'Read More ↗', href: 'https://blog.devops-monk.com/2026/04/stock-market-analysis-dashboard/', internal: false },
     ],
     gradient: 'from-blue-600/20 to-cyan-600/20',
@@ -47,6 +49,7 @@ const projects = [
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
     tags: ['DNS', 'Self-Hosted', 'Infrastructure', 'Networking'],
     links: [
+      { label: 'Live App ↗', href: 'https://ddns.devops-monk.com/', internal: false },
       { label: 'Read More ↗', href: 'https://blog.devops-monk.com/2026/04/build-your-own-ddns-platform/', internal: false },
     ],
     gradient: 'from-orange-600/20 to-red-600/20',
