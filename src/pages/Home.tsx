@@ -12,7 +12,7 @@ const projects = [
     desc: 'A powerful Chrome extension for capturing, annotating, and recording your screen. Features region & full-page screenshots, a rich annotation editor with arrows, shapes, blur & redact tools, and screen recording with instant MP4 export.',
     tags: ['Chrome Extension', 'TypeScript', 'Fabric.js'],
     links: [
-      { label: 'Learn More', href: '#/snapmonk', internal: true },
+      { label: 'Learn More', href: '/snapmonk', internal: true },
       { label: 'GitHub ↗', href: 'https://github.com/devops-monk/snapMonk', internal: false },
     ],
     gradient: 'from-purple-600/20 to-blue-600/20',

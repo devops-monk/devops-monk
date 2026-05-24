@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>devops-monk-website</title>
+    <title>DevOps-Monk — Abhay Pratap Singh</title>
+    <meta name="description" content="DevOps Engineer & Open Source Builder. Creator of SnapMonk, MonkKit, and more." />
+    <script>
+      // Handle GitHub Pages SPA redirect from 404.html
+      (function() {
+        var p = window.location.search.slice(1);
+        if (p && p.indexOf('p=/') === 0) {
+          window.history.replaceState(null, null, p.slice(2) + window.location.hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
