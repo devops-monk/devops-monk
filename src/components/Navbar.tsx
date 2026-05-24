@@ -41,7 +41,6 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             <Link to="/" className={navLinkClass('/')}>Home</Link>
-            <Link to="/snapmonk" className={navLinkClass('/snapmonk')}>SnapMonk</Link>
             <a
               href="https://blog.devops-monk.com/"
               target="_blank"
@@ -79,13 +78,6 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
             >
               Home
-            </Link>
-            <Link
-              to="/snapmonk"
-              className="block px-3 py-2 rounded-md text-sm font-medium text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#161b22] transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              SnapMonk
             </Link>
             <a
               href="https://blog.devops-monk.com/"
