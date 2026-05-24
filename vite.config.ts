@@ -23,7 +23,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    copyIndexForRoutes(['snapmonk', 'privacy']),
+    copyIndexForRoutes(['snapmonk', 'monktab', 'privacy']),
   ],
   base: '/',
 })
