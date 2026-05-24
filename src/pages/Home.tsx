@@ -176,7 +176,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-4 text-[#8b949e] text-lg leading-relaxed">
               <p>
-                I'm a passionate DevOps engineer who loves the intersection of automation, infrastructure, and developer experience. I believe the best tools are the ones you barely notice — they just work.
+                I'm a passionate engineer who loves the intersection of automation, infrastructure, and developer experience. I believe the best tools are the ones you barely notice — they just work.
               </p>
               <p>
                 From Kubernetes clusters to Chrome extensions, I build across the stack. I write in-depth tutorials at{' '}
