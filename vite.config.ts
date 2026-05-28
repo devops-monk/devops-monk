@@ -23,7 +23,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    copyIndexForRoutes(['snapmonk', 'monktab', 'monkkit', 'share-market', 'dynamic-dns', 'privacy']),
+    copyIndexForRoutes(['snapmonk', 'monktab', 'monkkit', 'share-market', 'dynamic-dns', 'privacy', 'hydromonk']),
   ],
   base: '/',
 })
