@@ -32,6 +32,18 @@ const projects = [
     border: 'hover:border-violet-500/60',
   },
   {
+    icon: '💧',
+    title: 'HydroMonk',
+    desc: 'A smart drink water reminder Chrome extension with an animated water circle, streak tracking, customizable reminders, 14 rotating hydration facts, and a benefits panel backed by science.',
+    tags: ['Chrome Extension', 'TypeScript', 'Web Audio API'],
+    links: [
+      { label: 'Learn More', href: '/hydromonk', internal: true },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/hydromonk', internal: false },
+    ],
+    gradient: 'from-sky-600/20 to-cyan-600/20',
+    border: 'hover:border-sky-500/60',
+  },
+  {
     icon: '🛠️',
     title: 'MonkKit',
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
