@@ -9,6 +9,7 @@ import ShareMarket from './pages/ShareMarket'
 import DynamicDNS from './pages/DynamicDNS'
 import Privacy from './pages/Privacy'
 import HydroMonk from './pages/HydroMonk'
+import ShortStop from './pages/ShortStop'
 import './index.css'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/share-market" element={<ShareMarket />} />
             <Route path="/dynamic-dns" element={<DynamicDNS />} />
             <Route path="/hydromonk" element={<HydroMonk />} />
+            <Route path="/shortstop" element={<ShortStop />} />
             <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
