@@ -44,6 +44,18 @@ const projects = [
     border: 'hover:border-sky-500/60',
   },
   {
+    icon: '🚫',
+    title: 'ShortStop',
+    desc: 'A Chrome extension that blocks YouTube Shorts on every surface — homepage shelf, sidebar tab, search results, and channel pages. Includes smart URL redirect and a time-saved stats tracker.',
+    tags: ['Chrome Extension', 'TypeScript', 'Manifest V3'],
+    links: [
+      { label: 'Learn More', href: '/shortstop', internal: true },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/shortstop', internal: false },
+    ],
+    gradient: 'from-red-600/20 to-rose-600/20',
+    border: 'hover:border-red-500/60',
+  },
+  {
     icon: '🛠️',
     title: 'MonkKit',
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
@@ -178,7 +190,7 @@ export default function Home() {
                 ⚡ DevOps-Monk
               </div>
               <div className="absolute -top-3 -left-3 bg-[#161b22] border border-purple-500/30 rounded-xl px-3 py-2 text-sm font-semibold text-purple-400 shadow-xl">
-                5+ Projects
+                6+ Projects
               </div>
             </div>
           </div>
