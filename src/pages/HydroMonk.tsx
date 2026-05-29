@@ -111,7 +111,7 @@ export default function HydroMonk() {
 
           <div className="flex flex-wrap gap-4 justify-center">
             <a
-              href="https://chromewebstore.google.com/detail/hydromonk"
+              href="https://chromewebstore.google.com/detail/diagobbpjphmeliobpjhjclnhkmdfjjj?utm_source=item-share-cb"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 text-white font-bold hover:from-sky-500 hover:to-blue-500 transition-all duration-200 shadow-xl shadow-sky-600/30 hover:-translate-y-0.5 text-sm"
@@ -290,7 +290,7 @@ export default function HydroMonk() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <a
-                  href="https://chromewebstore.google.com/detail/hydromonk"
+                  href="https://chromewebstore.google.com/detail/diagobbpjphmeliobpjhjclnhkmdfjjj?utm_source=item-share-cb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 text-white font-bold text-lg hover:from-sky-500 hover:to-blue-500 transition-all duration-200 shadow-xl shadow-sky-600/30 hover:-translate-y-0.5"
