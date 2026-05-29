@@ -98,9 +98,14 @@ export default function SnapMonk() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <span className="px-7 py-3.5 rounded-xl bg-[#30363d]/60 border border-[#30363d] text-[#8b949e] font-semibold cursor-not-allowed text-sm">
-              🚀 Coming to Chrome Web Store
-            </span>
+            <a
+              href="https://chromewebstore.google.com/detail/eembjjbdakagdbmlkffleccoklpjfbjc?utm_source=item-share-cb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold hover:from-purple-500 hover:to-blue-500 transition-all duration-200 shadow-xl shadow-purple-600/30 hover:-translate-y-0.5 text-sm"
+            >
+              🚀 Add to Chrome — It's Free
+            </a>
             <a
               href="https://github.com/devops-monk/snapMonk"
               target="_blank"
@@ -222,18 +227,29 @@ export default function SnapMonk() {
               <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-blue-600/15 rounded-full blur-3xl" />
             </div>
             <div className="relative">
-              <h2 className="text-3xl font-bold text-[#e6edf3] mb-4">Ready to Try SnapMonk?</h2>
+              <div className="text-5xl mb-4">📸</div>
+              <h2 className="text-3xl font-bold text-[#e6edf3] mb-4">Start Capturing Smarter Today</h2>
               <p className="text-[#8b949e] text-lg mb-8">
-                Star us on GitHub and be the first to know when we hit the Chrome Web Store.
+                Free forever. No account. Install in one click and capture your first screenshot in seconds.
               </p>
-              <a
-                href="https://github.com/devops-monk/snapMonk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-200 shadow-xl shadow-purple-600/30 hover:-translate-y-0.5"
-              >
-                ⭐ Star on GitHub
-              </a>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <a
+                  href="https://chromewebstore.google.com/detail/eembjjbdakagdbmlkffleccoklpjfbjc?utm_source=item-share-cb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-200 shadow-xl shadow-purple-600/30 hover:-translate-y-0.5"
+                >
+                  🚀 Add to Chrome — Free
+                </a>
+                <a
+                  href="https://github.com/devops-monk/snapMonk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-[#30363d] text-[#e6edf3] font-bold text-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-200"
+                >
+                  ⭐ Star on GitHub
+                </a>
+              </div>
             </div>
           </div>
         </div>
