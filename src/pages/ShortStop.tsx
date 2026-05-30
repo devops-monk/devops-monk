@@ -108,7 +108,7 @@ export default function ShortStop() {
 
           <div className="flex flex-wrap gap-4 justify-center">
             <a
-              href="https://chromewebstore.google.com/detail/shortstop"
+              href="https://chromewebstore.google.com/detail/janbnilagenpccgfddmlaedmocinkckc"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold hover:from-red-500 hover:to-rose-500 transition-all duration-200 shadow-xl shadow-red-600/30 hover:-translate-y-0.5 text-sm"
@@ -331,7 +331,7 @@ export default function ShortStop() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <a
-                  href="https://chromewebstore.google.com/detail/shortstop"
+                  href="https://chromewebstore.google.com/detail/janbnilagenpccgfddmlaedmocinkckc"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-lg hover:from-red-500 hover:to-rose-500 transition-all duration-200 shadow-xl shadow-red-600/30 hover:-translate-y-0.5"
