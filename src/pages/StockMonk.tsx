@@ -301,8 +301,8 @@ function TrendingTab() {
         av = a.stockTwits?.bullRatio ?? -1
         bv = b.stockTwits?.bullRatio ?? -1
       } else {
-        av = Number((a as Record<string, unknown>)[sortKey]) || 0
-        bv = Number((b as Record<string, unknown>)[sortKey]) || 0
+        av = Number((a as unknown as Record<string, unknown>)[sortKey]) || 0
+        bv = Number((b as unknown as Record<string, unknown>)[sortKey]) || 0
       }
       return sortDir === 'asc' ? av - bv : bv - av
     })
@@ -426,8 +426,8 @@ function SignalsTab() {
       return true
     })
     .sort((a, b) => {
-      const av = Number((a as Record<string, unknown>)[sortKey]) || 0
-      const bv = Number((b as Record<string, unknown>)[sortKey]) || 0
+      const av = Number((a as unknown as Record<string, unknown>)[sortKey]) || 0
+      const bv = Number((b as unknown as Record<string, unknown>)[sortKey]) || 0
       return sortDir === 'asc' ? av - bv : bv - av
     })
 
@@ -613,8 +613,8 @@ function EarningsTab() {
         av = new Date(a.reportDate).getTime()
         bv = new Date(b.reportDate).getTime()
       } else if (sortKey === 'epsEstimate' || sortKey === 'epsActual' || sortKey === 'daysUntil') {
-        av = (a as Record<string, unknown>)[sortKey] as number ?? 0
-        bv = (b as Record<string, unknown>)[sortKey] as number ?? 0
+        av = (a as unknown as Record<string, unknown>)[sortKey] as number ?? 0
+        bv = (b as unknown as Record<string, unknown>)[sortKey] as number ?? 0
       } else {
         av = 0; bv = 0
       }
@@ -1148,8 +1148,8 @@ function WatchlistTab() {
   }
 
   const sorted = [...results].sort((a, b) => {
-    const av = (a as Record<string, unknown>)[sortKey]
-    const bv = (b as Record<string, unknown>)[sortKey]
+    const av = (a as unknown as Record<string, unknown>)[sortKey]
+    const bv = (b as unknown as Record<string, unknown>)[sortKey]
     if (typeof av === 'string' && typeof bv === 'string') {
       return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av)
     }
