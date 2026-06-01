@@ -78,6 +78,17 @@ const projects = [
     border: 'hover:border-blue-500/60',
   },
   {
+    icon: '🟢',
+    title: 'StockMonk Dashboard',
+    desc: 'Live stock intelligence dashboard powered by Reddit buzz, StockTwits sentiment, earnings calendars, and news — with composite buy signals, trending stocks, earnings surprises, and watchlist tracking.',
+    tags: ['Finance', 'Live API', 'Dashboard', 'TypeScript'],
+    links: [
+      { label: 'Open Dashboard', href: '/stockmonk', internal: true },
+    ],
+    gradient: 'from-green-600/20 to-emerald-600/20',
+    border: 'hover:border-green-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
