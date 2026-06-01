@@ -825,6 +825,7 @@ function LookupTab() {
   const [detail, setDetail] = useState<StockDetail | null>(null)
   const [signal, setSignal] = useState<Signal | null>(null)
   const [history, setHistory] = useState<MentionHistory | null>(null)
+  const [surprises, setSurprises] = useState<Array<{ date: string; epsEstimated: number; eps: number; surprise: number; surprisePct: number }>>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -838,15 +839,18 @@ function LookupTab() {
     setDetail(null)
     setSignal(null)
     setHistory(null)
+    setSurprises([])
 
     Promise.allSettled([
       fetch(`${API}/stocks/${sym}/detail`).then(r => r.json()),
       fetch(`${API}/signals/${sym}`).then(r => r.json()),
       fetch(`${API}/trending/history/${sym}?days=7`).then(r => r.json()),
-    ]).then(([detailRes, signalRes, histRes]) => {
+      fetch(`${API}/earnings/${sym}/surprises`).then(r => r.json()),
+    ]).then(([detailRes, signalRes, histRes, surprisesRes]) => {
       if (detailRes.status === 'fulfilled') setDetail(detailRes.value)
       if (signalRes.status === 'fulfilled' && signalRes.value.score != null) setSignal(signalRes.value)
       if (histRes.status === 'fulfilled' && histRes.value.history) setHistory(histRes.value)
+      if (surprisesRes.status === 'fulfilled' && surprisesRes.value.surprises) setSurprises(surprisesRes.value.surprises)
       setLoading(false)
       if (detailRes.status === 'rejected') setError(`No data found for "${sym}"`)
     })
@@ -976,46 +980,83 @@ function LookupTab() {
               </div>
             )}
 
-            {/* Next earnings */}
-            <div className="rounded-xl border border-[#30363d] bg-[#161b22] p-5">
-              <h3 className="font-semibold text-[#e6edf3] mb-4">Earnings History</h3>
-              {detail.earningsHistory.length === 0 ? (
-                <p className="text-[#8b949e] text-sm">No earnings history available</p>
-              ) : (
-                <div className="space-y-3">
-                  {detail.earningsHistory.slice(0, 4).map(e => (
-                    <div key={e.date} className="flex items-center justify-between text-sm">
-                      <span className="text-[#8b949e]">{fmtDate(e.date)}</span>
-                      <div className="text-right">
-                        <span className="text-[#8b949e]">Est: </span>
-                        <span className="text-[#e6edf3]">${fmt(e.epsEstimated)}</span>
-                        <span className="mx-1 text-[#30363d]">|</span>
-                        <span className="text-[#8b949e]">Act: </span>
-                        <span className={e.eps > e.epsEstimated ? 'text-green-400 font-semibold' : 'text-red-400 font-semibold'}>
-                          ${fmt(e.eps)}
-                        </span>
-                        <span className={`ml-1.5 text-xs ${e.surprise >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          ({e.surprise >= 0 ? '+' : ''}{fmt(e.surprisePct)}%)
-                        </span>
+            {/* Earnings surprise history — 8 quarters via FMP */}
+            <div className="rounded-xl border border-[#30363d] bg-[#161b22] p-5 sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-[#e6edf3]">Earnings Surprises</h3>
+                <span className="text-xs text-[#8b949e]">8 quarters · via FMP</span>
+              </div>
+
+              {surprises.length === 0 ? (
+                <p className="text-[#8b949e] text-sm">No surprise history available</p>
+              ) : (() => {
+                const displayed = [...surprises].reverse()
+                const maxAbs = Math.max(...displayed.map(e => Math.abs(e.surprisePct)), 1)
+                const beatsCount = displayed.filter(e => e.surprisePct > 0).length
+                return (
+                  <>
+                    {/* Summary pill */}
+                    <div className="flex items-center gap-3 mb-4 text-xs">
+                      <span className="text-green-400 font-semibold">{beatsCount}/{displayed.length} beats</span>
+                      <span className="text-[#8b949e]">avg surprise:</span>
+                      <span className={`font-semibold ${displayed.reduce((s, e) => s + e.surprisePct, 0) / displayed.length >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        {(displayed.reduce((s, e) => s + e.surprisePct, 0) / displayed.length).toFixed(2)}%
+                      </span>
+                    </div>
+
+                    {/* Bar chart */}
+                    <div className="flex items-end gap-1.5 h-24 mb-3">
+                      {displayed.map(e => {
+                        const beat = e.surprisePct >= 0
+                        const heightPct = Math.max((Math.abs(e.surprisePct) / maxAbs) * 100, 4)
+                        return (
+                          <div key={e.date} className="flex-1 flex flex-col items-center gap-1 group relative">
+                            {/* Tooltip */}
+                            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col items-center z-10 pointer-events-none">
+                              <div className="bg-[#0d1117] border border-[#30363d] rounded-lg px-2.5 py-1.5 text-xs whitespace-nowrap shadow-xl">
+                                <div className="font-semibold text-[#e6edf3]">{new Date(e.date).toLocaleDateString('en-US', { month: 'short', year: '2-digit' })}</div>
+                                <div className="text-[#8b949e]">Est: ${fmt(e.epsEstimated)}</div>
+                                <div className={beat ? 'text-green-400' : 'text-red-400'}>Act: ${fmt(e.eps)}</div>
+                                <div className={`font-bold ${beat ? 'text-green-400' : 'text-red-400'}`}>{beat ? '+' : ''}{fmt(e.surprisePct)}%</div>
+                              </div>
+                              <div className={`w-2 h-2 rotate-45 -mt-1 border-r border-b border-[#30363d] ${beat ? 'bg-green-500/10' : 'bg-red-500/10'}`} />
+                            </div>
+                            {/* Bar */}
+                            <div className="flex-1 w-full flex items-end">
+                              <div
+                                className={`w-full rounded-t transition-all duration-500 ${beat ? 'bg-green-500 hover:bg-green-400' : 'bg-red-500 hover:bg-red-400'}`}
+                                style={{ height: `${heightPct}%` }}
+                              />
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {/* Quarter labels */}
+                    <div className="flex gap-1.5">
+                      {displayed.map(e => (
+                        <div key={e.date} className="flex-1 text-center text-[9px] text-[#8b949e] truncate">
+                          {new Date(e.date).toLocaleDateString('en-US', { month: 'short', year: '2-digit' })}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Next earnings */}
+                    {detail.nextEarnings && (
+                      <div className="mt-4 pt-4 border-t border-[#30363d] flex items-center justify-between text-sm">
+                        <span className="text-[#8b949e]">Next report</span>
+                        <div className="text-right">
+                          <span className="text-yellow-400 font-semibold">{fmtDate(detail.nextEarnings.date)}</span>
+                          {detail.nextEarnings.epsEstimate != null && (
+                            <span className="text-[#8b949e] text-xs ml-2">Est. ${fmt(detail.nextEarnings.epsEstimate)}</span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-              {detail.nextEarnings && (
-                <div className="mt-4 pt-4 border-t border-[#30363d]">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-[#8b949e]">Next Report</span>
-                    <span className="text-yellow-400 font-semibold">{fmtDate(detail.nextEarnings.date)}</span>
-                  </div>
-                  {detail.nextEarnings.epsEstimate != null && (
-                    <div className="flex items-center justify-between text-sm mt-1">
-                      <span className="text-[#8b949e]">EPS Est.</span>
-                      <span className="text-[#e6edf3]">${fmt(detail.nextEarnings.epsEstimate)}</span>
-                    </div>
-                  )}
-                </div>
-              )}
+                    )}
+                  </>
+                )
+              })()}
             </div>
 
             {/* Mention history */}
