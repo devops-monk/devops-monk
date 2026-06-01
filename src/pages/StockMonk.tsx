@@ -8,7 +8,10 @@ interface StockTwits { bullishCount: number; bearishCount: number; bullRatio: nu
 
 interface TrendingStock {
   rank: number; ticker: string; name: string
-  mentions: number; upvotes: number; mentionsDelta24h: string; stockTwits: StockTwits | null
+  mentions: number; upvotes: number
+  mentions24hAgo: number | null; mentionsDelta24h: string
+  rankChange: number | null; rank24hAgo: number | null
+  stockTwits: StockTwits | null
 }
 
 interface SignalBreakdown {
@@ -75,16 +78,18 @@ interface MentionHistory {
 
 type SortDir = 'asc' | 'desc'
 
-const SUBREDDITS = ['wallstreetbets', 'stocks', 'options', 'investing', 'Daytrading', 'SPACs'] as const
+const SUBREDDITS = ['wallstreetbets', 'stocks', 'options', 'investing', 'Daytrading', 'SPACs', 'WallStreetbetsELITE', 'Wallstreetbetsnew'] as const
 type Subreddit = typeof SUBREDDITS[number]
 
 const SUBREDDIT_COLOR: Record<Subreddit, string> = {
-  wallstreetbets: 'text-orange-400 border-orange-500/30 bg-orange-500/10',
-  stocks: 'text-blue-400 border-blue-500/30 bg-blue-500/10',
-  options: 'text-purple-400 border-purple-500/30 bg-purple-500/10',
-  investing: 'text-green-400 border-green-500/30 bg-green-500/10',
-  Daytrading: 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10',
-  SPACs: 'text-pink-400 border-pink-500/30 bg-pink-500/10',
+  wallstreetbets:      'text-orange-400 border-orange-500/30 bg-orange-500/10',
+  stocks:              'text-blue-400 border-blue-500/30 bg-blue-500/10',
+  options:             'text-purple-400 border-purple-500/30 bg-purple-500/10',
+  investing:           'text-green-400 border-green-500/30 bg-green-500/10',
+  Daytrading:          'text-yellow-400 border-yellow-500/30 bg-yellow-500/10',
+  SPACs:               'text-pink-400 border-pink-500/30 bg-pink-500/10',
+  WallStreetbetsELITE: 'text-red-400 border-red-500/30 bg-red-500/10',
+  Wallstreetbetsnew:   'text-cyan-400 border-cyan-500/30 bg-cyan-500/10',
 }
 
 const BREAKDOWN_LABEL: Record<string, string> = {
@@ -371,14 +376,15 @@ function TrendingTab({ onLookup }: { onLookup: (ticker: string) => void }) {
                   <th className="px-4 py-3 text-left text-xs font-semibold text-[#8b949e] uppercase tracking-wider">Company</th>
                   <Th label="Mentions" col="mentions" />
                   <Th label="Upvotes" col="upvotes" />
-                  <Th label="24h Δ" col="mentionsDelta24h" />
+                  <Th label="Mention Δ" col="mentionsDelta24h" />
+                  <Th label="Rank Δ" col="rankChange" />
                   <Th label="Bullish %" col="bullRatio" />
                   <th className="px-4 py-3 text-left text-xs font-semibold text-[#8b949e] uppercase tracking-wider">Detail</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.length === 0 ? (
-                  <tr><td colSpan={8} className="text-center py-12 text-[#8b949e]">No stocks match your filters</td></tr>
+                  <tr><td colSpan={9} className="text-center py-12 text-[#8b949e]">No stocks match your filters</td></tr>
                 ) : filtered.map((s, i) => (
                   <tr key={s.ticker} className={`border-b border-[#30363d]/40 hover:bg-purple-500/5 transition-colors ${i % 2 ? 'bg-[#161b22]/30' : ''}`}>
                     <td className="px-4 py-3 text-[#8b949e] font-mono text-xs">{s.rank}</td>
@@ -389,6 +395,13 @@ function TrendingTab({ onLookup }: { onLookup: (ticker: string) => void }) {
                     <td className="px-4 py-3">
                       {s.mentionsDelta24h != null
                         ? <span className={`font-semibold ${parseFloat(String(s.mentionsDelta24h)) >= 0 ? 'text-green-400' : 'text-red-400'}`}>{parseFloat(String(s.mentionsDelta24h)) >= 0 ? '+' : ''}{s.mentionsDelta24h}</span>
+                        : <span className="text-[#8b949e]">—</span>}
+                    </td>
+                    <td className="px-4 py-3">
+                      {s.rankChange != null
+                        ? <span className={`font-semibold text-xs ${s.rankChange > 0 ? 'text-green-400' : s.rankChange < 0 ? 'text-red-400' : 'text-[#8b949e]'}`}>
+                            {s.rankChange > 0 ? '▲' : s.rankChange < 0 ? '▼' : '—'}{Math.abs(s.rankChange) > 0 ? Math.abs(s.rankChange) : ''}
+                          </span>
                         : <span className="text-[#8b949e]">—</span>}
                     </td>
                     <td className="px-4 py-3">
@@ -1015,7 +1028,8 @@ function SubredditCard({ data }: { data: StockDetail['subredditBreakdown'] | nul
           const colorClass = SUBREDDIT_COLOR[sr as Subreddit] ?? 'text-purple-400 border-purple-500/30 bg-purple-500/10'
           const barColor = sr === 'wallstreetbets' ? 'bg-orange-500' : sr === 'stocks' ? 'bg-blue-500'
             : sr === 'options' ? 'bg-purple-500' : sr === 'investing' ? 'bg-green-500'
-            : sr === 'Daytrading' ? 'bg-yellow-500' : 'bg-pink-500'
+            : sr === 'Daytrading' ? 'bg-yellow-500' : sr === 'SPACs' ? 'bg-pink-500'
+            : sr === 'WallStreetbetsELITE' ? 'bg-red-500' : 'bg-cyan-500'
           return (
             <div key={sr}>
               <div className="flex items-center justify-between mb-1.5 text-xs">
