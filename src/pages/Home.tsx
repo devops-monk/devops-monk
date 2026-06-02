@@ -62,7 +62,7 @@ const projects = [
     tags: ['Chrome Extension', 'TypeScript', 'Finance', 'Live API'],
     links: [
       { label: 'Learn More', href: '/stockmonk-extension', internal: true },
-      { label: 'Add to Chrome ↗', href: 'https://chromewebstore.google.com/detail/pgcedbokambbanpanhfnmdjonedelndo?utm_source=item-share-cb', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/stockmonk', internal: false },
     ],
     gradient: 'from-green-600/20 to-emerald-600/20',
     border: 'hover:border-green-500/60',
