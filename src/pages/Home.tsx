@@ -56,6 +56,18 @@ const projects = [
     border: 'hover:border-red-500/60',
   },
   {
+    icon: '📊',
+    title: 'StockMonk Extension',
+    desc: 'A Chrome extension for real-time stock intelligence — buy signals, Reddit sentiment, earnings calendars, and a personal watchlist for US, UK, Indian, and European markets, all in one popup.',
+    tags: ['Chrome Extension', 'TypeScript', 'Finance', 'Live API'],
+    links: [
+      { label: 'Learn More', href: '/stockmonk-extension', internal: true },
+      { label: 'Add to Chrome ↗', href: 'https://chromewebstore.google.com/detail/pgcedbokambbanpanhfnmdjonedelndo?utm_source=item-share-cb', internal: false },
+    ],
+    gradient: 'from-green-600/20 to-emerald-600/20',
+    border: 'hover:border-green-500/60',
+  },
+  {
     icon: '🛠️',
     title: 'MonkKit',
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
