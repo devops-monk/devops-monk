@@ -261,12 +261,17 @@ export default function MonkTab() {
             <div className="relative">
               <h2 className="text-3xl font-bold text-[#e6edf3] mb-4">Ready to Try MonkTab?</h2>
               <p className="text-[#8b949e] text-lg mb-8">
-                Launching on the Chrome Web Store soon. In the meantime, install it from source.
+                Free forever. No account needed. Install in one click.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <span className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#30363d]/60 border border-[#30363d] text-[#8b949e] font-semibold text-lg cursor-not-allowed">
-                  🚀 Coming to Chrome Web Store
-                </span>
+                <a
+                  href="https://chromewebstore.google.com/detail/ejbpffkfedmaiknjodhglndogkdhlnnc?utm_source=item-share-cb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-lg transition-all duration-200 shadow-lg shadow-violet-500/25"
+                >
+                  🚀 Add to Chrome — It's Free
+                </a>
                 <a
                   href="https://github.com/devops-monk/monkTab"
                   target="_blank"
