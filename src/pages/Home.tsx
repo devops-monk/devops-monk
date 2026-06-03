@@ -168,11 +168,11 @@ export default function Home() {
               </h1>
 
               <p className="text-xl sm:text-2xl text-[#8b949e] font-medium mb-6">
-                Software Engineer & Open Source Builder
+                Software Engineer & Cloud Infrastructure Enthusiast
               </p>
 
               <p className="text-[#8b949e] text-lg leading-relaxed max-w-xl mb-8 mx-auto lg:mx-0">
-                I build tools that make developers' lives easier — from browser extensions to market intelligence platforms. I love turning complex infrastructure problems into elegant, shippable solutions.
+                I'm a Software Engineer passionate about software development, cloud infrastructure, and open-source technologies. I enjoy building scalable, reliable systems and sharing practical insights, lessons learned, and real-world experience with the developer community.
               </p>
 
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
