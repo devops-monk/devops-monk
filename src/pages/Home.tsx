@@ -111,6 +111,18 @@ const projects = [
     gradient: 'from-orange-600/20 to-red-600/20',
     border: 'hover:border-orange-500/60',
   },
+  {
+    icon: '🎁',
+    title: 'Personalised Gifts',
+    desc: 'A full-stack e-commerce platform for personalised gifts — browse curated gift ideas, customise products, and place orders with a clean, modern storefront built for a seamless shopping experience.',
+    tags: ['E-Commerce', 'Full Stack', 'React', 'Node.js'],
+    links: [
+      { label: 'Learn More ↗', href: 'https://blog.devops-monk.com/2026/05/personalised-gifts-ecommerce-platform/', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/abhi15sep/personalised-gifts', internal: false },
+    ],
+    gradient: 'from-pink-600/20 to-rose-600/20',
+    border: 'hover:border-pink-500/60',
+  },
 ]
 
 const posts = [
