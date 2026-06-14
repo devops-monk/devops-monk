@@ -8,66 +8,6 @@ const skills = [
 
 const projects = [
   {
-    icon: '📸',
-    title: 'SnapMonk',
-    desc: 'A powerful Chrome extension for capturing, annotating, and recording your screen. Features region & full-page screenshots, a rich annotation editor with arrows, shapes, blur & redact tools, and screen recording with instant MP4 export.',
-    tags: ['Chrome Extension', 'TypeScript', 'Fabric.js'],
-    links: [
-      { label: 'Learn More', href: '/snapmonk', internal: true },
-      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/snapMonk', internal: false },
-    ],
-    gradient: 'from-purple-600/20 to-blue-600/20',
-    border: 'hover:border-purple-500/60',
-  },
-  {
-    icon: '🧘',
-    title: 'MonkTab',
-    desc: 'A Momentum-inspired new tab extension for developers. Pomodoro timer, 20+ ambient soundscapes, smart tasks with priority, Focus Mode with ring timer, weather, world clocks, quick bookmarks, and a lo-fi YouTube player — all in one beautiful page.',
-    tags: ['Chrome Extension', 'TypeScript', 'Web Audio API'],
-    links: [
-      { label: 'Learn More', href: '/monktab', internal: true },
-      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/monkTab', internal: false },
-    ],
-    gradient: 'from-violet-600/20 to-purple-600/20',
-    border: 'hover:border-violet-500/60',
-  },
-  {
-    icon: '💧',
-    title: 'HydroMonk',
-    desc: 'A smart drink water reminder Chrome extension with an animated water circle, streak tracking, customizable reminders, 14 rotating hydration facts, and a benefits panel backed by science.',
-    tags: ['Chrome Extension', 'TypeScript', 'Web Audio API'],
-    links: [
-      { label: 'Learn More', href: '/hydromonk', internal: true },
-      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/hydromonk', internal: false },
-    ],
-    gradient: 'from-sky-600/20 to-cyan-600/20',
-    border: 'hover:border-sky-500/60',
-  },
-  {
-    icon: '🚫',
-    title: 'ShortStop',
-    desc: 'A Chrome extension that blocks YouTube Shorts on every surface — homepage shelf, sidebar tab, search results, and channel pages. Includes smart URL redirect and a time-saved stats tracker.',
-    tags: ['Chrome Extension', 'TypeScript', 'Manifest V3'],
-    links: [
-      { label: 'Learn More', href: '/shortstop', internal: true },
-      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/shortstop', internal: false },
-    ],
-    gradient: 'from-red-600/20 to-rose-600/20',
-    border: 'hover:border-red-500/60',
-  },
-  {
-    icon: '📊',
-    title: 'StockMonk Extension',
-    desc: 'A Chrome extension for real-time stock intelligence — buy signals, Reddit sentiment, earnings calendars, and a personal watchlist for US, UK, Indian, and European markets, all in one popup.',
-    tags: ['Chrome Extension', 'TypeScript', 'Finance', 'Live API'],
-    links: [
-      { label: 'Learn More', href: '/stockmonk-extension', internal: true },
-      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/stockmonk', internal: false },
-    ],
-    gradient: 'from-green-600/20 to-emerald-600/20',
-    border: 'hover:border-green-500/60',
-  },
-  {
     icon: '🛠️',
     title: 'MonkKit',
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
@@ -287,7 +227,10 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Projects</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mx-auto mb-4" />
             <p className="text-[#8b949e] text-lg max-w-xl mx-auto">
-              Things I've built — from developer tools to infrastructure platforms.
+              Things I've built — from developer tools to infrastructure platforms.{' '}
+              <Link to="/extensions" className="text-purple-400 hover:text-purple-300 transition-colors">
+                Browse Chrome extensions →
+              </Link>
             </p>
           </div>
 
