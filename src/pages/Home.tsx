@@ -63,6 +63,17 @@ const projects = [
     gradient: 'from-pink-600/20 to-rose-600/20',
     border: 'hover:border-pink-500/60',
   },
+  {
+    icon: '🎙️',
+    title: 'Vox',
+    desc: 'A cross-platform desktop voice-to-text app — press a global hotkey, speak, and the transcribed text is pasted wherever you\'re typing. Runs fully offline via a bundled whisper.cpp model, no cloud API, no audio ever leaves your machine.',
+    tags: ['Desktop App', 'Tauri', 'Rust', 'Whisper.cpp'],
+    links: [
+      { label: 'Learn More', href: '/vox', internal: true },
+    ],
+    gradient: 'from-violet-600/20 to-purple-600/20',
+    border: 'hover:border-violet-500/60',
+  },
 ]
 
 const posts = [
@@ -173,7 +184,7 @@ export default function Home() {
                 ⚡ DevOps-Monk
               </div>
               <div className="absolute -top-3 -left-3 bg-[#161b22] border border-purple-500/30 rounded-xl px-3 py-2 text-sm font-semibold text-purple-400 shadow-xl">
-                6+ Projects
+                7+ Projects
               </div>
             </div>
           </div>
