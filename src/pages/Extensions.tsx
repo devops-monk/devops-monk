@@ -2,6 +2,19 @@ import { Link } from 'react-router-dom'
 
 const extensions = [
   {
+    icon: '📝',
+    title: 'Driftnote',
+    desc: 'A note-taking extension with a real rich editor, optional per-note encryption, Google Drive sync, and sticky notes you can leave on any web page. Colors, tags, reminders, Trash, and export to Markdown/PDF — private by design, offline-first.',
+    tags: ['Chrome Extension', 'TypeScript', 'TipTap', 'WebCrypto'],
+    links: [
+      { label: 'Learn More', href: '/driftnote', internal: true },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/Driftnote', internal: false },
+    ],
+    gradient: 'from-blue-600/20 to-indigo-600/20',
+    border: 'hover:border-blue-500/60',
+    highlight: 'border-blue-500/20',
+  },
+  {
     icon: '📸',
     title: 'SnapMonk',
     desc: 'A powerful Chrome extension for capturing, annotating, and recording your screen. Features region & full-page screenshots, a rich annotation editor with arrows, shapes, blur & redact tools, and screen recording with instant MP4 export.',

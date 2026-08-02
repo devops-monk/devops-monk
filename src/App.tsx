@@ -9,6 +9,7 @@ import ShareMarket from './pages/ShareMarket'
 import DynamicDNS from './pages/DynamicDNS'
 import Privacy from './pages/Privacy'
 import HydroMonk from './pages/HydroMonk'
+import Driftnote from './pages/Driftnote'
 import ShortStop from './pages/ShortStop'
 import StockMonk from './pages/StockMonk'
 import StockMonkExtension from './pages/StockMonkExtension'
@@ -30,6 +31,7 @@ function App() {
             <Route path="/share-market" element={<ShareMarket />} />
             <Route path="/dynamic-dns" element={<DynamicDNS />} />
             <Route path="/hydromonk" element={<HydroMonk />} />
+            <Route path="/driftnote" element={<Driftnote />} />
             <Route path="/shortstop" element={<ShortStop />} />
             <Route path="/stockmonk" element={<StockMonk />} />
             <Route path="/stockmonk-extension" element={<StockMonkExtension />} />
