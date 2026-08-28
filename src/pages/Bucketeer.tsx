@@ -48,19 +48,19 @@ const features = [
 
 const shots = [
   {
-    src: '/bucketeer/connections.png',
+    src: '/bucketeer/connections-v2.png',
     alt: 'Bucketeer connection picker listing two saved AWS connections',
     title: 'Connections',
     caption: 'Keep as many accounts as you need side by side — a temporary key here, a shared profile there. Credentials live in the OS keychain, never in a config file this app wrote.',
   },
   {
-    src: '/bucketeer/buckets.png',
+    src: '/bucketeer/buckets-v2.png',
     alt: 'Bucketeer listing 211 buckets with a filter box',
     title: 'Buckets',
     caption: 'Two hundred buckets stay navigable. Filter as you type, sort by name or date, and create a new bucket without leaving the window.',
   },
   {
-    src: '/bucketeer/objects.png',
+    src: '/bucketeer/objects-v2.png',
     alt: 'Bucketeer object browser with a context menu open over a selected object',
     title: 'Objects',
     caption: 'Upload, download, sync, rename, copy, move, share and re-class — from the toolbar, the context menu, or a multi-select across a thousand objects.',
