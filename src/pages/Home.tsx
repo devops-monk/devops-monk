@@ -64,6 +64,18 @@ const projects = [
     border: 'hover:border-pink-500/60',
   },
   {
+    icon: '\u{1FAA3}',
+    title: 'Bucketeer',
+    desc: 'An open-source desktop S3 client for macOS, Windows and Linux. Browse buckets, sync folders, and edit encryption, tags, headers, versions and storage class \u2014 without the console or the CLI. Speaks every AWS credential, including IAM Identity Center, with keys held in the OS keychain.',
+    tags: ['Desktop App', 'Electron', 'AWS S3', 'TypeScript'],
+    links: [
+      { label: 'Learn More', href: '/bucketeer', internal: true },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/bucketeer-desktop', internal: false },
+    ],
+    gradient: 'from-pink-600/20 to-rose-600/20',
+    border: 'hover:border-pink-500/60',
+  },
+  {
     icon: '🎙️',
     title: 'Vox',
     desc: 'A cross-platform desktop voice-to-text app — press a global hotkey, speak, and the transcribed text is pasted wherever you\'re typing. Runs fully offline via a bundled whisper.cpp model, no cloud API, no audio ever leaves your machine.',

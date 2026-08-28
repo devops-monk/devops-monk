@@ -15,6 +15,7 @@ import StockMonk from './pages/StockMonk'
 import StockMonkExtension from './pages/StockMonkExtension'
 import Extensions from './pages/Extensions'
 import Vox from './pages/Vox'
+import Bucketeer from './pages/Bucketeer'
 import './index.css'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/stockmonk-extension" element={<StockMonkExtension />} />
             <Route path="/extensions" element={<Extensions />} />
             <Route path="/vox" element={<Vox />} />
+            <Route path="/bucketeer" element={<Bucketeer />} />
             <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
