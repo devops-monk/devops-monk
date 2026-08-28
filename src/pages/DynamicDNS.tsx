@@ -1,156 +1,199 @@
+import type { ReactNode } from 'react'
+
+/* ── Icons ──────────────────────────────────────────────────────────────── */
+
+const iconProps = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.5,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+  viewBox: '0 0 24 24',
+  'aria-hidden': true,
+}
+
+const icons: Record<string, ReactNode> = {
+  shuffle: <><path d="M16 3h5v5" /><path d="M4 20 21 3" /><path d="M21 16v5h-5" /><path d="m15 15 6 6" /><path d="M4 4l5 5" /></>,
+  wallet: <><path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M16 12h2" /></>,
+  link: <><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7" /><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" /></>,
+  lock: <><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></>,
+  clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+  tag: <><path d="M3 11V4a1 1 0 0 1 1-1h7l9 9-8 8z" /><circle cx="7.5" cy="7.5" r="1.2" /></>,
+  terminal: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="m8 10 2.5 2L8 14" /><path d="M13 15h4" /></>,
+  play: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m10 9.5 5 2.5-5 2.5z" /></>,
+  home: <><path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 21v-7h6v7" /></>,
+  drive: <><rect x="3" y="4" width="18" height="7" rx="2" /><rect x="3" y="13" width="18" height="7" rx="2" /><path d="M7 7.5h.01M7 16.5h.01" /></>,
+  hook: <><path d="M12 3v8a4 4 0 0 1-8 0" /><circle cx="12" cy="19" r="2" /><path d="M12 13v4" /></>,
+  gamepad: <><rect x="2" y="7" width="20" height="11" rx="4" /><path d="M7 11v3M5.5 12.5h3" /><circle cx="16" cy="11.5" r="1" /><circle cx="18.5" cy="14" r="1" /></>,
+  camera: <><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><circle cx="12" cy="12.5" r="3.5" /></>,
+  flask: <><path d="M10 3h4" /><path d="M11 3v6l-5.5 9A2 2 0 0 0 7.2 21h9.6a2 2 0 0 0 1.7-3L13 9V3" /><path d="M8 15h8" /></>,
+  refresh: <><path d="M20 11a8 8 0 0 0-14-4.5L4 9" /><path d="M4 5v4h4" /><path d="M4 13a8 8 0 0 0 14 4.5L20 15" /><path d="M20 19v-4h-4" /></>,
+  bolt: <><path d="M13 2 4 14h7l-1 8 9-12h-7z" /></>,
+  key: <><circle cx="8" cy="14" r="4" /><path d="m11 11 9-9" /><path d="m17 5 2 2" /><path d="m14.5 7.5 2 2" /></>,
+  chart: <><path d="M4 20V6" /><path d="M4 20h16" /><rect x="8" y="12" width="3" height="8" /><rect x="14" y="8" width="3" height="12" /></>,
+  bell: <><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6" /><path d="M10.5 20a2 2 0 0 0 3 0" /></>,
+  globe: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18" /></>,
+  activity: <><path d="M3 12h4l3 8 4-16 3 8h4" /></>,
+  shield: <><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z" /><path d="m9 12 2 2 4-4" /></>,
+  container: <><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z" /><path d="m4 7.5 8 4.5 8-4.5" /><path d="M12 12v9" /></>,
+}
+
+function Icon({ name, className = '' }: { name: string; className?: string }) {
+  return <svg {...iconProps} className={className}>{icons[name]}</svg>
+}
+
+/* ── Content ────────────────────────────────────────────────────────────── */
+
 const problems = [
   {
-    icon: '🎲',
-    title: 'Your ISP keeps changing your IP',
-    desc: 'Residential broadband hands out dynamic addresses. Reboot the router, survive an outage, or just wait long enough, and the IP you bookmarked yesterday belongs to someone else today.',
+    icon: 'shuffle',
+    title: 'Residential IP addresses rotate',
+    desc: 'Consumer broadband assigns addresses dynamically. A router reboot, a line fault, or a routine lease renewal is enough to reassign the address your services were reachable on.',
   },
   {
-    icon: '💸',
-    title: 'A static IP costs money — or is not sold at all',
-    desc: 'Most consumer ISPs charge a business-plan premium for a static address, and plenty simply refuse to sell one. A DDNS name gets you the same practical result for free.',
+    icon: 'wallet',
+    title: 'Static addressing is priced as a business feature',
+    desc: 'Where a static IP is offered at all, it typically requires a business tariff. Dynamic DNS achieves the same reachability without changing your plan.',
   },
   {
-    icon: '🔗',
-    title: 'Hard-coded IPs break everything downstream',
-    desc: 'SSH configs, webhook URLs, firewall allow-lists, monitoring checks, family members’ bookmarks. One IP change and you are editing all of them by hand.',
+    icon: 'link',
+    title: 'Hard-coded addresses create maintenance debt',
+    desc: 'SSH configuration, webhook endpoints, firewall allow-lists, and monitoring checks each embed the address. A single change requires updating all of them.',
   },
   {
-    icon: '🚪',
-    title: 'You are locked out when you are not home',
-    desc: 'The moment the IP rotates while you are travelling, your home server is unreachable and there is no one on the couch to read the new address off the router page.',
+    icon: 'lock',
+    title: 'Remote access fails without local intervention',
+    desc: 'When the address changes while you are away, the only way to recover it is to read the new value from equipment you cannot reach.',
   },
   {
-    icon: '⛓️',
-    title: 'Free DDNS providers keep shrinking',
-    desc: 'No-IP expires hostnames every 30 days unless you click a confirmation email. DynDNS killed its free tier outright. Others rate-limit, inject ads, or vanish.',
+    icon: 'clock',
+    title: 'Free DDNS tiers have contracted',
+    desc: 'No-IP expires hostnames every thirty days without an email confirmation. DynDNS withdrew its free tier entirely. Remaining providers impose rate limits or interstitials.',
   },
   {
-    icon: '🏷️',
-    title: 'You want your own name, not theirs',
-    desc: 'A hostname like myhome.ddns.devops-monk.com reads like infrastructure you own. Something.ddns.net reads like a hobby account on a service that may not outlive it.',
+    icon: 'tag',
+    title: 'Vendor hostnames are not your namespace',
+    desc: 'A hostname under a provider’s domain ties your infrastructure to their branding and their continued operation. Records here sit under a domain you can point elsewhere.',
   },
 ]
 
 const useCases = [
-  { icon: '🖥️', title: 'SSH into your home server', desc: 'ssh you@homelab.ddns.devops-monk.com from anywhere, without ever looking up an address again.' },
-  { icon: '🎬', title: 'Plex, Jellyfin & media servers', desc: 'Give family a permanent hostname for your media library instead of an IP that dies every few weeks.' },
-  { icon: '🏠', title: 'Home Assistant & IoT', desc: 'Point automations, companion apps, and remote dashboards at a name that follows your connection.' },
-  { icon: '💾', title: 'NAS & backups', desc: 'Synology, TrueNAS, or a plain rsync target stays reachable for off-site backups on a schedule.' },
-  { icon: '🪝', title: 'Webhook development', desc: 'Receive Stripe, GitHub, or Twilio callbacks straight to your dev box — no tunnel process to keep alive.' },
-  { icon: '🎮', title: 'Game & voice servers', desc: 'Share one hostname with your group once, and stop posting a new IP in the chat every weekend.' },
-  { icon: '📷', title: 'Cameras & NVR', desc: 'Reach security footage remotely without paying for the camera vendor’s cloud subscription.' },
-  { icon: '🧪', title: 'Lab & staging environments', desc: 'Give a Raspberry Pi cluster or a spare mini-PC a stable DNS name for CI runners and demos.' },
+  { icon: 'terminal', title: 'Remote shell access', desc: 'Address home infrastructure by hostname in SSH config rather than maintaining a current IP address.' },
+  { icon: 'play', title: 'Media servers', desc: 'Provide Plex, Jellyfin, or similar services with a stable endpoint for users outside the network.' },
+  { icon: 'home', title: 'Home automation', desc: 'Point companion applications and remote dashboards at a hostname that tracks the connection.' },
+  { icon: 'drive', title: 'Network storage and backup', desc: 'Keep off-site backup targets reachable on a schedule without manual reconfiguration.' },
+  { icon: 'hook', title: 'Webhook delivery', desc: 'Receive provider callbacks directly on a development machine without maintaining a tunnel process.' },
+  { icon: 'gamepad', title: 'Game and voice servers', desc: 'Distribute a single hostname to participants instead of redistributing an address after each change.' },
+  { icon: 'camera', title: 'Surveillance systems', desc: 'Reach recorders and camera interfaces remotely without a vendor cloud subscription.' },
+  { icon: 'flask', title: 'Lab and staging environments', desc: 'Assign stable names to self-hosted CI runners, test nodes, and demonstration environments.' },
 ]
 
 const steps = [
-  { n: '1', title: 'Sign in', desc: 'Log in with Google, GitHub, Microsoft, or email and password. No credit card, no monthly confirmation email to keep the name alive.' },
-  { n: '2', title: 'Claim a subdomain', desc: 'Pick any name and it becomes yours — myhome.ddns.devops-monk.com. Up to 5 per account, each with its own scoped update token.' },
-  { n: '3', title: 'Point something at it', desc: 'A cron line, your router’s built-in DDNS form, the desktop app, or a raw HTTP call. Whatever suits the machine.' },
-  { n: '4', title: 'Forget about it', desc: 'The record follows your connection. Low TTLs mean a new IP resolves within seconds, and the dashboard logs every change.' },
+  { n: '01', title: 'Authenticate', desc: 'Sign in with Google, GitHub, Microsoft, or email and password. No payment details and no recurring confirmation are required to retain a hostname.' },
+  { n: '02', title: 'Register a subdomain', desc: 'Choose a label under ddns.devops-monk.com. Each account supports up to five subdomains, and each is issued its own scoped update token.' },
+  { n: '03', title: 'Configure an updater', desc: 'Use a scheduled job, your router’s built-in DDNS client, the desktop application, or a direct HTTP request — whichever suits the host that stays online.' },
+  { n: '04', title: 'Operate', desc: 'The record follows the connection. Short TTLs allow a new address to resolve within seconds, and every change is recorded in the dashboard.' },
 ]
 
 const methods = [
   {
-    tag: 'Cron',
+    tag: 'Scheduled job',
     title: 'Linux, macOS, Raspberry Pi',
-    desc: 'One crontab line. No daemon, no dependencies beyond curl.',
-    code: `*/5 * * * * curl -s "https://api.devops-monk.com/update\\
-?domain=myhome&token=YOUR_TOKEN" > /dev/null`,
+    desc: 'A single crontab entry. No daemon and no dependencies beyond curl.',
+    code: '*/5 * * * * curl -s "https://api.devops-monk.com/update\\\n?domain=myhome&token=YOUR_TOKEN" > /dev/null',
   },
   {
     tag: 'Router',
     title: 'DD-WRT, OpenWRT, EdgeRouter, pfSense',
-    desc: 'Paste the URL into the router’s custom DDNS field. The router updates DNS itself — nothing else in the house needs to stay powered on.',
-    code: `https://api.devops-monk.com/update\\
-?domain=myhome&token=YOUR_TOKEN`,
+    desc: 'Enter the URL in the router’s custom DDNS field. The router performs the update itself, so no other host needs to remain powered on.',
+    code: 'https://api.devops-monk.com/update\\\n?domain=myhome&token=YOUR_TOKEN',
   },
   {
-    tag: 'Desktop app',
+    tag: 'Desktop client',
     title: 'Windows, macOS, Linux',
-    desc: 'For anyone who would rather not touch a terminal. Install, paste subdomain and token, and it keeps the record fresh in the background.',
-    code: `# Download from
-https://ddns.devops-monk.com/downloads`,
+    desc: 'For users who prefer not to work in a terminal. Install, supply the subdomain and token, and the client maintains the record in the background.',
+    code: '# Available from\nhttps://ddns.devops-monk.com/downloads',
   },
   {
-    tag: 'API',
-    title: 'Scripts & containers',
-    desc: 'A plain HTTP GET that returns the recorded IP. Drop it into a Docker healthcheck, a systemd timer, or your own agent.',
-    code: `curl "https://api.devops-monk.com/update\\
-?domain=myhome&token=YOUR_TOKEN"
-# → {"status":"ok","ip":"143.58.156.75"}`,
+    tag: 'HTTP API',
+    title: 'Scripts and containers',
+    desc: 'A single GET request returning the recorded address. Suitable for container health checks, systemd timers, or a custom agent.',
+    code: 'curl "https://api.devops-monk.com/update\\\n?domain=myhome&token=YOUR_TOKEN"\n# {"status":"ok","ip":"143.58.156.75"}',
   },
 ]
 
 const features = [
-  { icon: '🔄', title: 'Auto IP Updates', desc: 'Cron job, router firmware, desktop agent, or a bare HTTP call — the record updates the moment your ISP rotates your address.' },
-  { icon: '⚡', title: 'Low TTL Propagation', desc: 'Records use short TTLs so DNS resolves the new address within seconds of a change — no downtime waiting on stale caches.' },
-  { icon: '🔐', title: 'Per-Domain Tokens', desc: 'Every subdomain gets its own scoped update token you can rotate independently. A token on a Pi cannot touch your other records.' },
-  { icon: '📊', title: 'IP Change History', desc: 'An audit trail per record — timestamp, previous IP, new IP — so an outage becomes a question you can actually answer.' },
-  { icon: '🔔', title: 'Webhook Notifications', desc: 'Fire a Discord, Telegram, Slack, or custom webhook whenever an IP changes. Know your connection moved before your users do.' },
-  { icon: '🌐', title: 'IPv4 and IPv6', desc: 'A and AAAA records both supported, so dual-stack connections stay reachable on either protocol.' },
-  { icon: '📡', title: 'Live Connectivity View', desc: 'The dashboard traces device → internet → DDNS server → DNS records with latency at each hop, refreshed every 30 seconds.' },
-  { icon: '🔓', title: 'SSO Login', desc: 'Google, GitHub, and Microsoft sign-in, or plain email and password with self-serve reset. No separate account to remember.' },
-  { icon: '🐳', title: 'Self-Hostable', desc: 'The whole stack — Express API, PowerDNS, PostgreSQL — ships as Docker Compose. Run the hosted service, or run your own copy.' },
+  { icon: 'refresh', title: 'Automatic updates', desc: 'Scheduled job, router firmware, desktop client, or direct HTTP request. The record is revised as soon as the address changes.' },
+  { icon: 'bolt', title: 'Short TTL propagation', desc: 'Records are published with low TTLs so resolvers pick up a new address within seconds rather than waiting on cached values.' },
+  { icon: 'key', title: 'Scoped update tokens', desc: 'Each subdomain is issued an independent token that can be rotated on its own. A token deployed to one host cannot modify other records.' },
+  { icon: 'chart', title: 'Change history', desc: 'A per-record audit trail of timestamp, previous address, and new address, making connectivity incidents straightforward to reconstruct.' },
+  { icon: 'bell', title: 'Change notifications', desc: 'Outbound webhooks to Discord, Telegram, Slack, or a custom endpoint whenever an address changes.' },
+  { icon: 'globe', title: 'IPv4 and IPv6', desc: 'A and AAAA records are both supported, keeping dual-stack connections reachable over either protocol.' },
+  { icon: 'activity', title: 'Connectivity diagnostics', desc: 'The dashboard traces device, internet, DDNS server, and DNS record state with per-hop latency, refreshed every thirty seconds.' },
+  { icon: 'shield', title: 'Federated sign-in', desc: 'Google, GitHub, and Microsoft identity providers, alongside email and password with self-service reset.' },
+  { icon: 'container', title: 'Self-hostable', desc: 'The full stack — API, authoritative nameserver, database, and reverse proxy — is distributed as a Docker Compose deployment.' },
 ]
 
 const comparison = [
-  { label: 'Free tier that stays free', ours: 'Yes', theirs: 'Shrinking or gone' },
-  { label: 'Monthly confirmation email', ours: 'No', theirs: 'Required by No-IP' },
-  { label: 'Per-domain scoped tokens', ours: 'Yes', theirs: 'Usually one account password' },
-  { label: 'IP change history', ours: 'Yes', theirs: 'Rare on free tiers' },
-  { label: 'Webhook on IP change', ours: 'Yes', theirs: 'Paid add-on' },
-  { label: 'Self-host the whole stack', ours: 'Yes', theirs: 'No' },
+  { label: 'Free tier without expiry', ours: 'Included', theirs: 'Reduced or withdrawn' },
+  { label: 'Recurring confirmation required', ours: 'No', theirs: 'Required by No-IP' },
+  { label: 'Per-subdomain scoped tokens', ours: 'Included', theirs: 'Single account credential' },
+  { label: 'Address change history', ours: 'Included', theirs: 'Rarely on free tiers' },
+  { label: 'Webhook on change', ours: 'Included', theirs: 'Paid add-on' },
+  { label: 'Self-hosting the full stack', ours: 'Supported', theirs: 'Not available' },
 ]
+
+const stack = ['Node.js', 'Express', 'PowerDNS', 'PostgreSQL', 'React', 'Docker Compose', 'Nginx']
+
+/* ── Page ───────────────────────────────────────────────────────────────── */
 
 export default function DynamicDNS() {
   return (
     <div className="overflow-x-hidden">
 
-      {/* ── Hero ── */}
-      <section className="relative min-h-[75vh] flex items-center">
+      {/* Hero */}
+      <section className="relative min-h-[70vh] flex items-center">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-orange-600/15 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-600/10 rounded-full blur-3xl" />
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-orange-600/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-600/[0.07] rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center w-full">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-sm font-medium mb-6">
-            <span className="text-lg">🌐</span>
-            DNS · Self-Hosted · Infrastructure
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-semibold tracking-wide uppercase mb-8">
+            DNS Infrastructure
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#e6edf3] leading-tight mb-6">
-            <span className="bg-gradient-to-r from-orange-400 via-red-400 to-orange-400 bg-clip-text text-transparent">
-              Dynamic DNS Platform
-            </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#e6edf3] leading-[1.1] mb-6">
+            Dynamic DNS <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Platform</span>
           </h1>
 
-          <p className="text-2xl sm:text-3xl font-semibold text-[#e6edf3] mb-4">
-            A permanent name for an address that keeps moving.
+          <p className="text-xl sm:text-2xl text-[#e6edf3] font-medium mb-6 leading-snug">
+            A stable hostname for infrastructure on a changing address.
           </p>
 
-          <p className="text-[#8b949e] text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-            Your home connection gets a new IP whenever your ISP feels like it. This platform gives you a hostname
-            like <span className="text-orange-300 font-mono text-base">myhome.ddns.devops-monk.com</span> that
-            follows it automatically — so SSH, your media server, your webhooks, and your backups keep working
-            without anyone reading an IP off a router page.
+          <p className="text-[#8b949e] text-lg leading-relaxed max-w-2xl mb-10">
+            Residential connections are assigned addresses that change without notice. This platform maintains a DNS
+            record — <span className="text-orange-300 font-mono text-base">myhome.ddns.devops-monk.com</span> — that
+            tracks the current address automatically, so remote access, media services, webhook endpoints, and backup
+            jobs continue to resolve correctly.
           </p>
 
-          <div className="flex flex-wrap gap-3 justify-center mb-8">
-            <span className="px-3 py-1.5 rounded-lg text-sm font-semibold bg-orange-500/15 text-orange-400 border border-orange-500/30">✓ Free to use</span>
-            <span className="px-3 py-1.5 rounded-lg text-sm font-semibold bg-red-500/15 text-red-400 border border-red-500/30">✓ No monthly confirmation</span>
-            <span className="px-3 py-1.5 rounded-lg text-sm font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">✓ Auto IP updates</span>
-            <span className="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30">✓ Self-hostable</span>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10 text-sm text-[#8b949e]">
+            {['Free to use', 'No recurring confirmation', 'Automatic updates', 'Self-hostable'].map((t) => (
+              <span key={t} className="inline-flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />{t}
+              </span>
+            ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4">
             <a
               href="https://ddns.devops-monk.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold hover:from-orange-500 hover:to-red-500 transition-all duration-200 shadow-xl shadow-orange-600/25 hover:-translate-y-0.5 text-sm"
+              className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold hover:from-orange-500 hover:to-red-500 transition-all duration-200 shadow-lg shadow-orange-600/20 hover:-translate-y-0.5 text-sm"
             >
-              Claim Your Subdomain ↗
+              Open the platform
             </a>
             <a
               href="https://blog.devops-monk.com/2026/04/build-your-own-ddns-platform/"
@@ -158,99 +201,99 @@ export default function DynamicDNS() {
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-xl border border-[#30363d] text-[#e6edf3] font-semibold hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-200 text-sm"
             >
-              Read the Blog Post ↗
+              Technical write-up
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── The problem ── */}
-      <section className="py-20 relative">
+      {/* Problem */}
+      <section className="py-20 relative border-t border-[#30363d]/60">
         <div className="absolute inset-0 bg-[#161b22]/50 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">The Problem It Solves</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto mb-4" />
-            <p className="text-[#8b949e] text-lg max-w-2xl mx-auto">
-              Everything you host at home lives behind an address you do not control and cannot predict.
-              These are the six ways that bites.
+          <div className="max-w-2xl mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">The problem</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-5" />
+            <p className="text-[#8b949e] text-lg leading-relaxed">
+              Self-hosted services depend on an address that the connection provider controls and reassigns without
+              warning. Six consequences follow from that.
             </p>
           </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {problems.map((p) => (
               <div key={p.title} className="rounded-2xl border border-[#30363d] bg-[#0d1117] p-6 hover:border-orange-500/40 transition-colors duration-300">
-                <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-bold text-[#e6edf3] mb-2 text-lg">{p.title}</h3>
+                <Icon name={p.icon} className="w-6 h-6 text-orange-400 mb-4" />
+                <h3 className="font-semibold text-[#e6edf3] mb-2">{p.title}</h3>
                 <p className="text-[#8b949e] text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl border border-orange-500/30 bg-orange-500/5 p-6 sm:p-8">
-            <p className="text-[#8b949e] leading-relaxed text-center max-w-3xl mx-auto">
-              <span className="text-[#e6edf3] font-semibold">The fix is one layer of indirection.</span> Instead of
-              sharing an IP, you share a hostname. A tiny updater tells the platform whenever the IP behind that
-              hostname changes, the DNS record is rewritten in seconds, and everything pointed at the name keeps
-              resolving to the right place.
+          <div className="mt-8 rounded-2xl border border-orange-500/25 bg-orange-500/5 p-6 sm:p-8">
+            <p className="text-[#8b949e] leading-relaxed max-w-3xl">
+              <span className="text-[#e6edf3] font-semibold">The resolution is a layer of indirection.</span>{' '}
+              Services are published under a hostname rather than an address. A lightweight updater reports the
+              current address to the platform, the DNS record is rewritten within seconds, and every client
+              referencing the hostname continues to resolve to the correct destination.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── Dashboard screenshot ── */}
+      {/* Dashboard */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">The Dashboard</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto mb-4" />
-            <p className="text-[#8b949e] text-lg max-w-2xl mx-auto">
-              One screen shows the whole path from your device to the live DNS record — and lets you claim a new
-              subdomain in a single field.
+          <div className="max-w-2xl mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">The dashboard</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-5" />
+            <p className="text-[#8b949e] text-lg leading-relaxed">
+              A single view covering the path from the local device through to the published DNS record, with
+              subdomain registration inline.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] overflow-hidden shadow-2xl shadow-orange-950/30 hover:border-orange-500/40 transition-colors duration-300">
+          <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] overflow-hidden shadow-2xl shadow-black/40">
             <img
               src="/ddns/dashboard.png"
-              alt="DDNS dashboard showing the connectivity path from device to DNS records, public IP, and a registered subdomain"
+              alt="Dashboard showing the connectivity path from device to DNS records, current public address, and a registered subdomain"
               loading="lazy"
               className="w-full h-auto block"
             />
           </div>
 
           <div className="grid sm:grid-cols-3 gap-5 mt-8">
-            <div className="rounded-xl border border-[#30363d] bg-[#0d1117] p-5">
-              <h3 className="font-bold text-[#e6edf3] mb-2">Connectivity trace</h3>
-              <p className="text-[#8b949e] text-sm leading-relaxed">Device → internet → DDNS server → DNS records, with latency at each hop and an auto-refresh every 30 seconds.</p>
-            </div>
-            <div className="rounded-xl border border-[#30363d] bg-[#0d1117] p-5">
-              <h3 className="font-bold text-[#e6edf3] mb-2">Live IP at a glance</h3>
-              <p className="text-[#8b949e] text-sm leading-relaxed">Current public IP, how long ago it last changed, and whether the service is healthy — no digging through logs.</p>
-            </div>
-            <div className="rounded-xl border border-[#30363d] bg-[#0d1117] p-5">
-              <h3 className="font-bold text-[#e6edf3] mb-2">Your domains</h3>
-              <p className="text-[#8b949e] text-sm leading-relaxed">Every subdomain with its record type, status, resolved IP, copy-to-clipboard update URL, and full change history.</p>
-            </div>
+            {[
+              { t: 'Connectivity trace', d: 'Device, internet, DDNS server, and DNS record state with per-hop latency, refreshed automatically every thirty seconds.' },
+              { t: 'Current address', d: 'The active public address, the interval since the last change, and overall service health in a single row.' },
+              { t: 'Registered subdomains', d: 'Each record with its type, status, resolved address, copyable update URL, and full change history.' },
+            ].map((c) => (
+              <div key={c.t} className="rounded-xl border border-[#30363d] bg-[#0d1117] p-5">
+                <h3 className="font-semibold text-[#e6edf3] mb-2">{c.t}</h3>
+                <p className="text-[#8b949e] text-sm leading-relaxed">{c.d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Use cases ── */}
-      <section className="py-20 relative">
+      {/* Use cases */}
+      <section className="py-20 relative border-t border-[#30363d]/60">
         <div className="absolute inset-0 bg-[#161b22]/50 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">What People Use It For</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto mb-4" />
-            <p className="text-[#8b949e] text-lg max-w-2xl mx-auto">
-              Anything at home that something outside the house needs to reach.
+          <div className="max-w-2xl mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Applications</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-5" />
+            <p className="text-[#8b949e] text-lg leading-relaxed">
+              Any service hosted on a residential connection that must be reachable from outside the network.
             </p>
           </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {useCases.map((u) => (
-              <div key={u.title} className="rounded-2xl border border-[#30363d] bg-[#0d1117] p-6 hover:border-orange-500/50 hover:bg-[#161b22] transition-all duration-300 hover:-translate-y-0.5">
-                <div className="text-3xl mb-3">{u.icon}</div>
-                <h3 className="font-bold text-[#e6edf3] mb-2">{u.title}</h3>
+              <div key={u.title} className="rounded-2xl border border-[#30363d] bg-[#0d1117] p-6 hover:border-orange-500/50 hover:bg-[#161b22] transition-all duration-300">
+                <Icon name={u.icon} className="w-6 h-6 text-orange-400 mb-4" />
+                <h3 className="font-semibold text-[#e6edf3] mb-2">{u.title}</h3>
                 <p className="text-[#8b949e] text-sm leading-relaxed">{u.desc}</p>
               </div>
             ))}
@@ -258,20 +301,20 @@ export default function DynamicDNS() {
         </div>
       </section>
 
-      {/* ── How it works ── */}
+      {/* Getting started */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">How to Use It</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto mb-4" />
-            <p className="text-[#8b949e] text-lg max-w-2xl mx-auto">Four steps, and about five minutes.</p>
+          <div className="max-w-2xl mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Getting started</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-5" />
+            <p className="text-[#8b949e] text-lg leading-relaxed">Four steps, typically under five minutes.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            <div className="hidden lg:block absolute top-8 left-[12%] right-[12%] h-px bg-gradient-to-r from-orange-500/50 via-red-500/50 to-orange-500/50" />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step) => (
-              <div key={step.n} className="text-center relative">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-2xl font-bold text-white mx-auto mb-5 shadow-lg shadow-orange-600/30 relative z-10">{step.n}</div>
-                <h3 className="font-bold text-[#e6edf3] text-lg mb-2">{step.title}</h3>
+              <div key={step.n} className="relative pl-5 border-l-2 border-orange-500/30">
+                <div className="text-orange-400 font-mono text-sm font-bold mb-3">{step.n}</div>
+                <h3 className="font-semibold text-[#e6edf3] mb-2">{step.title}</h3>
                 <p className="text-[#8b949e] text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
@@ -279,26 +322,26 @@ export default function DynamicDNS() {
         </div>
       </section>
 
-      {/* ── Ways to keep it updated ── */}
-      <section className="py-20 relative">
+      {/* Update methods */}
+      <section className="py-20 relative border-t border-[#30363d]/60">
         <div className="absolute inset-0 bg-[#161b22]/50 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Four Ways to Keep It Updated</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto mb-4" />
-            <p className="text-[#8b949e] text-lg max-w-2xl mx-auto">
-              Every method hits the same endpoint. Pick whichever fits the machine that stays on.
+          <div className="max-w-2xl mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Update methods</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-5" />
+            <p className="text-[#8b949e] text-lg leading-relaxed">
+              Each method calls the same endpoint. Choose whichever matches the host that remains online.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5">
             {methods.map((m) => (
               <div key={m.tag} className="rounded-2xl border border-[#30363d] bg-[#0d1117] p-6 hover:border-orange-500/40 transition-colors duration-300 flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-orange-500/15 text-orange-400 border border-orange-500/30">{m.tag}</span>
-                  <h3 className="font-bold text-[#e6edf3]">{m.title}</h3>
+                <div className="flex items-baseline gap-3 mb-3 flex-wrap">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wide bg-orange-500/10 text-orange-400 border border-orange-500/25">{m.tag}</span>
+                  <h3 className="font-semibold text-[#e6edf3]">{m.title}</h3>
                 </div>
-                <p className="text-[#8b949e] text-sm leading-relaxed mb-4">{m.desc}</p>
+                <p className="text-[#8b949e] text-sm leading-relaxed mb-5">{m.desc}</p>
                 <pre className="mt-auto rounded-xl border border-[#30363d] bg-[#010409] p-4 overflow-x-auto text-xs leading-relaxed text-[#8b949e] font-mono">
                   <code>{m.code}</code>
                 </pre>
@@ -306,8 +349,8 @@ export default function DynamicDNS() {
             ))}
           </div>
 
-          <p className="text-center text-[#8b949e] text-sm mt-8">
-            Full endpoint reference lives at{' '}
+          <p className="text-[#8b949e] text-sm mt-8">
+            Complete endpoint reference:{' '}
             <a href="https://ddns.devops-monk.com/api-docs" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline underline-offset-4">
               ddns.devops-monk.com/api-docs
             </a>
@@ -315,19 +358,22 @@ export default function DynamicDNS() {
         </div>
       </section>
 
-      {/* ── Features ── */}
+      {/* Capabilities */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Platform Features</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto mb-4" />
-            <p className="text-[#8b949e] text-lg max-w-xl mx-auto">Everything a production-grade DDNS service needs, and nothing behind a paywall.</p>
+          <div className="max-w-2xl mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Capabilities</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-5" />
+            <p className="text-[#8b949e] text-lg leading-relaxed">
+              The functionality expected of a production DNS service, without a paid tier.
+            </p>
           </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((f) => (
-              <div key={f.title} className="group rounded-2xl border border-[#30363d] bg-[#0d1117] p-6 hover:border-orange-500/50 hover:bg-[#161b22] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-600/10">
-                <div className="text-3xl mb-3">{f.icon}</div>
-                <h3 className="font-bold text-[#e6edf3] mb-2 text-lg group-hover:text-orange-300 transition-colors">{f.title}</h3>
+              <div key={f.title} className="group rounded-2xl border border-[#30363d] bg-[#0d1117] p-6 hover:border-orange-500/50 hover:bg-[#161b22] transition-all duration-300">
+                <Icon name={f.icon} className="w-6 h-6 text-orange-400 mb-4" />
+                <h3 className="font-semibold text-[#e6edf3] mb-2 group-hover:text-orange-300 transition-colors">{f.title}</h3>
                 <p className="text-[#8b949e] text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
@@ -335,80 +381,90 @@ export default function DynamicDNS() {
         </div>
       </section>
 
-      {/* ── Comparison ── */}
-      <section className="py-20 relative">
+      {/* Comparison */}
+      <section className="py-20 relative border-t border-[#30363d]/60">
         <div className="absolute inset-0 bg-[#161b22]/50 pointer-events-none" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Versus the Usual Free Tiers</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto" />
+          <div className="mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Compared with common free tiers</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
           </div>
 
-          <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] overflow-hidden">
-            <div className="grid grid-cols-[1fr_auto_auto] gap-px bg-[#30363d]">
-              <div className="bg-[#161b22] px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#8b949e]">Capability</div>
-              <div className="bg-[#161b22] px-5 py-3 text-xs font-bold uppercase tracking-wider text-orange-400 text-center min-w-[7rem]">This platform</div>
-              <div className="bg-[#161b22] px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#8b949e] text-center min-w-[9rem]">Typical free DDNS</div>
-              {comparison.map((row) => (
-                <div key={row.label} className="contents">
-                  <div className="bg-[#0d1117] px-5 py-4 text-sm text-[#e6edf3]">{row.label}</div>
-                  <div className="bg-[#0d1117] px-5 py-4 text-sm font-semibold text-emerald-400 text-center">{row.ours}</div>
-                  <div className="bg-[#0d1117] px-5 py-4 text-sm text-[#8b949e] text-center">{row.theirs}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Why self-host ── */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-orange-500/30 bg-orange-500/5 p-8 sm:p-10 text-center">
-            <div className="text-4xl mb-4">🏠</div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#e6edf3] mb-4">Or Run the Whole Thing Yourself</h2>
-            <p className="text-[#8b949e] text-lg leading-relaxed max-w-2xl mx-auto mb-6">
-              Third-party DDNS providers go offline, change pricing, or sunset free tiers. The entire stack here —
-              an Express API, PowerDNS as the authoritative nameserver, PostgreSQL for accounts and logs, Nginx for
-              TLS — ships as a Docker Compose file. Point your own domain's NS records at it and you control the DNS,
-              the uptime, and the data.
-            </p>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {['Node.js + Express', 'PowerDNS', 'PostgreSQL', 'React + Vite', 'Docker Compose', 'Nginx + Let’s Encrypt'].map((t) => (
-                <span key={t} className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#161b22] text-[#8b949e] border border-[#30363d]">{t}</span>
-              ))}
-            </div>
+          <div className="rounded-2xl border border-[#30363d] overflow-hidden overflow-x-auto">
+            <table className="w-full text-sm border-collapse min-w-[34rem]">
+              <thead>
+                <tr className="bg-[#161b22]">
+                  <th className="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#8b949e]">Capability</th>
+                  <th className="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-orange-400">This platform</th>
+                  <th className="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#8b949e]">Typical free DDNS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((row) => (
+                  <tr key={row.label} className="border-t border-[#30363d] bg-[#0d1117]">
+                    <td className="px-5 py-4 text-[#e6edf3]">{row.label}</td>
+                    <td className="px-5 py-4 text-emerald-400 font-medium">{row.ours}</td>
+                    <td className="px-5 py-4 text-[#8b949e]">{row.theirs}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* Self-hosting */}
       <section className="py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="rounded-2xl border border-orange-500/30 bg-gradient-to-br from-orange-600/10 to-red-600/10 p-10 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] p-8 sm:p-10 grid lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#e6edf3] mb-4">Or deploy your own instance</h2>
+              <p className="text-[#8b949e] leading-relaxed">
+                Third-party providers discontinue services, revise pricing, and withdraw free tiers. The entire stack —
+                an Express API, PowerDNS as the authoritative nameserver, PostgreSQL for accounts and audit logs, and
+                Nginx terminating TLS — is distributed as a Docker Compose deployment. Delegate your own domain's NS
+                records to it and the DNS, the availability, and the data remain under your control.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 lg:justify-end">
+              {stack.map((t) => (
+                <span key={t} className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[#161b22] text-[#8b949e] border border-[#30363d]">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="pb-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-orange-500/25 bg-gradient-to-br from-orange-600/[0.08] to-red-600/[0.08] p-10 relative overflow-hidden text-center">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <div className="absolute -top-20 -right-20 w-60 h-60 bg-orange-600/15 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-red-600/10 rounded-full blur-3xl" />
+              <div className="absolute -top-20 -right-20 w-60 h-60 bg-orange-600/10 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-red-600/[0.07] rounded-full blur-3xl" />
             </div>
             <div className="relative">
-              <h2 className="text-3xl font-bold text-[#e6edf3] mb-4">Give Your Home a Real Address</h2>
-              <p className="text-[#8b949e] text-lg mb-8">Sign in, claim a subdomain, add one cron line. Or read the guide and deploy your own copy in under an hour.</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#e6edf3] mb-4">Register a subdomain</h2>
+              <p className="text-[#8b949e] text-lg mb-8 max-w-xl mx-auto">
+                Sign in, choose a hostname, and add a single scheduled job. The deployment guide covers running your
+                own instance.
+              </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <a
                   href="https://ddns.devops-monk.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold text-lg hover:from-orange-500 hover:to-red-500 transition-all duration-200 shadow-xl shadow-orange-600/30 hover:-translate-y-0.5"
+                  className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold hover:from-orange-500 hover:to-red-500 transition-all duration-200 shadow-lg shadow-orange-600/20 hover:-translate-y-0.5"
                 >
-                  Get Started Free ↗
+                  Get started
                 </a>
                 <a
                   href="https://blog.devops-monk.com/2026/04/build-your-own-ddns-platform/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-[#30363d] text-[#e6edf3] font-bold text-lg hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-200"
+                  className="px-8 py-3.5 rounded-xl border border-[#30363d] text-[#e6edf3] font-semibold hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-200"
                 >
-                  Read the Guide ↗
+                  Deployment guide
                 </a>
               </div>
             </div>
