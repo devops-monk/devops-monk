@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 
+const STORE_URL =
+  'https://chromewebstore.google.com/detail/ejbpffkfedmaiknjodhglndogkdhlnnc?utm_source=item-share-cb'
+
 const features = [
   {
     icon: '⏱',
@@ -108,9 +111,14 @@ export default function MonkTab() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <span className="px-7 py-3.5 rounded-xl bg-[#30363d]/60 border border-[#30363d] text-[#8b949e] font-semibold cursor-not-allowed text-sm">
-              🚀 Coming to Chrome Web Store
-            </span>
+            <a
+              href={STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold hover:from-violet-500 hover:to-purple-500 transition-all duration-200 shadow-xl shadow-violet-600/30 hover:-translate-y-0.5 text-sm"
+            >
+              🚀 Add to Chrome — It's Free
+            </a>
             <a
               href="https://github.com/devops-monk/monkTab"
               target="_blank"
@@ -265,7 +273,7 @@ export default function MonkTab() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <a
-                  href="https://chromewebstore.google.com/detail/ejbpffkfedmaiknjodhglndogkdhlnnc?utm_source=item-share-cb"
+                  href={STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-lg transition-all duration-200 shadow-lg shadow-violet-500/25"
