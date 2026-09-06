@@ -173,6 +173,14 @@ export default function Home() {
                 >
                   System Design ↗
                 </a>
+                <a
+                  href="https://ai.devops-monk.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-xl border border-[#30363d] text-[#e6edf3] font-semibold hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-200"
+                >
+                  AI Engineering ↗
+                </a>
               </div>
             </div>
 
