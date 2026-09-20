@@ -142,6 +142,38 @@ export default function Lector() {
         </div>
       </section>
 
+      {/* ── Screenshot ────────────────────────────────────────────────────── */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Every Voice, One Click Away</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mx-auto" />
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center">
+            <div className="lg:w-3/5 w-full">
+              <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] overflow-hidden shadow-2xl shadow-amber-950/30 hover:border-amber-500/40 transition-colors duration-300">
+                <img
+                  src="/lector/window.png"
+                  alt="The Lector window: a searchable list of 181 voices on the left with Kokoro expanded and Sarah selected, and a text pane on the right with a Speak button and speed control"
+                  loading="lazy"
+                  className="w-full h-auto block"
+                />
+              </div>
+            </div>
+            <div className="lg:w-2/5 w-full">
+              <h3 className="text-2xl font-bold text-[#e6edf3] mb-3">The voice browser</h3>
+              <p className="text-[#8b949e] leading-relaxed mb-4">
+                Twelve models, grouped and searchable. Downloaded ones expand into their speakers; the rest show their size and a Get button with a real progress bar.
+              </p>
+              <p className="text-[#8b949e] leading-relaxed">
+                Every voice has a play button that auditions it <em>without</em> switching to it — with 181 of them, having to adopt a voice just to hear it would make the list useless. Type or paste into the pane on the right, or select text in any other app and press the hotkey.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Features ──────────────────────────────────────────────────────── */}
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-[#161b22]/30 pointer-events-none" />
