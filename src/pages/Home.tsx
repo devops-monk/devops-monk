@@ -76,6 +76,18 @@ const projects = [
     border: 'hover:border-pink-500/60',
   },
   {
+    icon: '\u{1F4D6}',
+    title: 'Lector',
+    desc: 'The mirror image of Vox \u2014 a cross-platform desktop text-to-speech app. Select text anywhere, press a global hotkey, and hear it read aloud. 181 voices across three engine families, synthesized entirely on your machine with no Python and no cloud.',
+    tags: ['Desktop App', 'Tauri', 'Rust', 'sherpa-onnx'],
+    links: [
+      { label: 'Learn More', href: '/lector', internal: true },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/lector', internal: false },
+    ],
+    gradient: 'from-amber-600/20 to-orange-600/20',
+    border: 'hover:border-amber-500/60',
+  },
+  {
     icon: '🎙️',
     title: 'Vox',
     desc: 'A cross-platform desktop voice-to-text app — press a global hotkey, speak, and the transcribed text is pasted wherever you\'re typing. Runs fully offline via a bundled whisper.cpp model, no cloud API, no audio ever leaves your machine.',
