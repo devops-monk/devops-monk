@@ -268,9 +268,8 @@ function SttPanel({ apiKey }: { apiKey: string }) {
 
         <div className="rounded-xl border border-[#30363d] bg-[#0d1117] p-3.5">
           <p className="text-[11px] text-[#6e7681] leading-relaxed">
-            Whisper large-v3-turbo on CPU, so transcription takes longer than the
-            clip itself. Keep test recordings short — under thirty seconds is
-            comfortable.
+            Whisper small on CPU, English only. Transcribes at about two thirds of
+            real time, so a clip comes back sooner than it took to record.
           </p>
         </div>
       </div>
@@ -335,10 +334,9 @@ const ENDPOINTS = [
     desc: 'multipart/form-data. Returns { "text": "..." } by default.',
     params: [
       ['file', 'file', 'required', 'wav, mp3, m4a, ogg, flac, webm — max 25 MB'],
-      ['model', 'string', 'required', 'whisper-1 or whisper-large-v3-turbo'],
+      ['model', 'string', 'required', 'whisper-1 — English, Whisper small Q8_0'],
       ['response_format', 'string', 'json', 'json, text, verbose_json, srt, vtt'],
-      ['language', 'string', 'auto', 'ISO-639-1. Faster and more accurate when known'],
-      ['temperature', 'number', '0', '0 to 1'],
+      ['temperature', 'number', '0', '0 to 1. Raise only if output repeats'],
     ],
   },
   {
@@ -485,7 +483,7 @@ export default function VoiceApi() {
             The same models <a href="/vox" className="text-teal-400 hover:underline">Vox</a> and{' '}
             <a href="/lector" className="text-teal-400 hover:underline">Lector</a> run on the desktop, served over HTTP
             for the clients they can't reach — browser extensions, web pages, phones, automations.
-            Two endpoints, both byte-for-byte OpenAI's.
+            English, two endpoints, both byte-for-byte OpenAI's.
           </p>
         </div>
       </section>
@@ -524,7 +522,7 @@ export default function VoiceApi() {
           <div className="grid sm:grid-cols-3 gap-4 mb-8">
             {[
               ['Gateway', 'LiteLLM', 'Auth, virtual keys, per-key budgets and rate limits. Routing lives in one config file.'],
-              ['Speech to text', 'whisper.cpp', 'large-v3-turbo Q8_0 — the exact model file Vox ships.'],
+              ['Speech to text', 'whisper.cpp', 'Whisper small Q8_0, English. Measured at 0.66\u00d7 real time.'],
               ['Text to speech', 'Kokoro', 'The same weights Lector offers as its quality option.'],
             ].map(([role, name, desc]) => (
               <div key={role} className="rounded-2xl border border-[#30363d] bg-[#0d1117] p-5">
