@@ -2,6 +2,12 @@ import { useState, useRef, useEffect } from 'react'
 
 const API = 'https://voice.devops-monk.com'
 
+// A deliberately public key for the playground. Anything shipped to a browser
+// is public the moment it ships, so this is scoped rather than trusted: these
+// four models only, 6 requests a minute, and a $2 monthly ceiling. If it is
+// abused it gets revoked and replaced, and nothing else is affected.
+const DEMO_KEY = 'sk-i7G0ZSykrZkjrFCGTKRrAg'
+
 // Kokoro's English speakers, the same set Lector exposes.
 const VOICES = [
   { id: 'af_heart',    label: 'Heart',    note: 'American · warm' },
@@ -93,7 +99,7 @@ function TtsPanel({ apiKey }: { apiKey: string }) {
         body: JSON.stringify({ model: 'tts-1', voice, input: text, speed, response_format: 'mp3' }),
       })
       if (!r.ok) throw new Error(r.status === 401 ? 'Unauthorized — check the API key.'
-        : r.status === 429 ? 'Rate limit reached. Give it a minute.'
+        : r.status === 429 ? 'The shared demo key is rate limited to 6 requests a minute. Wait a moment, or paste your own key.'
         : `The API returned ${r.status}.`)
       const blob = await r.blob()
       if (url) URL.revokeObjectURL(url)
@@ -190,7 +196,7 @@ function SttPanel({ apiKey }: { apiKey: string }) {
       })
       if (!r.ok) throw new Error(r.status === 401 ? 'Unauthorized — check the API key.'
         : r.status === 413 ? 'That file is over the 25 MB limit.'
-        : r.status === 429 ? 'Rate limit reached. Give it a minute.'
+        : r.status === 429 ? 'The shared demo key is rate limited to 6 requests a minute. Wait a moment, or paste your own key.'
         : `The API returned ${r.status}.`)
       const d = await r.json()
       setText(d.text?.trim() || '(nothing was transcribed)')
@@ -276,7 +282,7 @@ function SttPanel({ apiKey }: { apiKey: string }) {
 
 function Playground() {
   const [tab, setTab] = useState<'tts' | 'stt'>('tts')
-  const [apiKey, setApiKey] = useState('')
+  const [apiKey, setApiKey] = useState(DEMO_KEY)
 
   return (
     <div className="rounded-2xl border border-[#30363d] bg-[#161b22]/60 overflow-hidden">
@@ -294,6 +300,7 @@ function Playground() {
         <input
           type="password" value={apiKey} onChange={e => setApiKey(e.target.value)}
           placeholder="API key"
+          title="A shared demo key is filled in. Paste your own to bypass its rate limit." 
           className="ml-auto my-2 w-32 sm:w-44 px-3 py-1.5 rounded-lg bg-[#0d1117] border border-[#30363d] text-[#e6edf3] placeholder-[#6e7681] text-xs focus:outline-none focus:border-teal-500/60 transition-colors"
         />
       </div>
@@ -488,8 +495,9 @@ export default function VoiceApi() {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-[#e6edf3] mb-3">Try it</h2>
             <p className="text-[#8b949e] text-sm max-w-xl mx-auto">
-              Paste an API key to use the live service. Everything is synthesized and
-              transcribed on one small virtual server — no cloud model behind it.
+              This is the live service, running on one small virtual server — no cloud
+              model behind it. A shared demo key is already filled in; it allows six
+              requests a minute, so paste your own if you hit the limit.
             </p>
           </div>
           <Playground />
