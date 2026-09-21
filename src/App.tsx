@@ -16,6 +16,7 @@ import StockMonkExtension from './pages/StockMonkExtension'
 import Extensions from './pages/Extensions'
 import Vox from './pages/Vox'
 import Lector from './pages/Lector'
+import VoiceApi from './pages/VoiceApi'
 import Bucketeer from './pages/Bucketeer'
 import './index.css'
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/extensions" element={<Extensions />} />
             <Route path="/vox" element={<Vox />} />
             <Route path="/lector" element={<Lector />} />
+            <Route path="/voice-api" element={<VoiceApi />} />
             <Route path="/bucketeer" element={<Bucketeer />} />
             <Route path="/privacy" element={<Privacy />} />
           </Routes>

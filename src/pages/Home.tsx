@@ -76,6 +76,18 @@ const projects = [
     border: 'hover:border-pink-500/60',
   },
   {
+    icon: '\u{1F39A}',
+    title: 'voice-api',
+    desc: 'Self-hosted speech-to-text and text-to-speech on one OpenAI-compatible endpoint \u2014 the same models Vox and Lector run on the desktop, served over HTTP for browser extensions, web pages and automations. Try both live in the browser.',
+    tags: ['API', 'Docker', 'LiteLLM', 'Whisper', 'Kokoro'],
+    links: [
+      { label: 'Try it live', href: '/voice-api', internal: true },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/voice-api', internal: false },
+    ],
+    gradient: 'from-teal-600/20 to-cyan-600/20',
+    border: 'hover:border-teal-500/60',
+  },
+  {
     icon: '\u{1F4D6}',
     title: 'Lector',
     desc: 'The mirror image of Vox \u2014 a cross-platform desktop text-to-speech app. Select text anywhere, press a global hotkey, and hear it read aloud. 181 voices across three engine families, synthesized entirely on your machine with no Python and no cloud.',
