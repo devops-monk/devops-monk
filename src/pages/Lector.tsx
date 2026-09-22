@@ -15,9 +15,19 @@ const features = [
     desc: 'Twelve models across three engine families — Kokoro, Piper and Kitten — from a 21 MB voice that is ready in seconds to a 349 MB model with 28 English speakers. Each has a play button that auditions it without switching.',
   },
   {
+    icon: '📚',
+    title: 'Reads Whole Books',
+    desc: 'Import EPUB, plain text, Markdown or PDF, or search Standard Ebooks and Project Gutenberg from inside the app. Chapters advance on their own, and your place is kept per book — quit mid-chapter and it resumes there.',
+  },
+  {
+    icon: '✨',
+    title: 'Follows Along',
+    desc: 'The sentence being spoken is highlighted, and clicking any sentence sends the voice there. The highlight is timed against audio the sound card has actually played, so it never runs ahead of what you are hearing.',
+  },
+  {
     icon: '📖',
     title: 'Reads Markdown Sensibly',
-    desc: 'A code block becomes the words "Code block", not a minute of punctuation. Tables are declined rather than read cell by cell, and file paths shorten to their basename instead of being spelled out one slash at a time.',
+    desc: 'A code block becomes the words "Code block", not a minute of punctuation. Tables are declined rather than read cell by cell, and file paths shorten to their basename. Footnotes in ebooks are skipped rather than read mid-sentence.',
   },
   {
     icon: '⚡',
@@ -28,6 +38,36 @@ const features = [
     icon: '🖥️',
     title: 'Cross-Platform',
     desc: 'Native builds for macOS (Apple Silicon & Intel), Windows, and Linux — built with Tauri and Rust for a small, fast, native footprint.',
+  },
+]
+
+const shots = [
+  {
+    src: '/lector/reading.png',
+    title: 'It follows the voice',
+    alt: 'Lector reading The Jungle Book, with the sentences already spoken highlighted and a "Read from here" tooltip over a later paragraph',
+    body: [
+      'The passage being spoken is highlighted as you hear it, and clicking any sentence sends the voice there. Pause and resume land on the same word.',
+      'The highlight is driven by frames the sound card has actually played, not by what has been generated — synthesis runs several sentences ahead, so a highlight keyed to it would sit permanently ahead of the voice.',
+    ],
+  },
+  {
+    src: '/lector/books.png',
+    title: 'Books, from two free libraries',
+    alt: 'Lector searching for "jungle", showing 26 results from Standard Ebooks and Project Gutenberg, with The Jungle Book already in the library',
+    body: [
+      'Search Standard Ebooks and Project Gutenberg together — around 75,000 public-domain books — and download one without leaving the app. Standard Ebooks editions come first, because they are properly typeset and proofed.',
+      'Or bring your own: EPUB, plain text, Markdown and PDF all import, and any article on the web can be read by pasting its address.',
+    ],
+  },
+  {
+    src: '/lector/voices.png',
+    title: '181 voices, auditioned before you commit',
+    alt: 'Lector\'s voice browser with Jenny marked ACTIVE and Kokoro expanded into its 28 English speakers',
+    body: [
+      'Twelve models across three engine families, each card naming what it costs you rather than what it is called. One is recommended; the rest sort by download size.',
+      'A voice you do not have yet reads "Hear it · 349 MB" — pressing it downloads, speaks a sample, and selects it. With 181 to choose from, having to adopt a voice just to hear it would make the list useless.',
+    ],
   },
 ]
 
@@ -44,8 +84,8 @@ const steps = [
   },
   {
     n: '3',
-    title: 'Select Text, Press the Hotkey',
-    desc: 'Anywhere on your system, select some text and press the hotkey. Lector reads it aloud. Press again to stop.',
+    title: 'Select Text, or Open a Book',
+    desc: 'Select text anywhere on your system and press the hotkey to hear it. Or open the Library, search the free catalogues or add a file of your own, and let it read you a chapter at a time.',
   },
 ]
 
@@ -74,11 +114,11 @@ export default function Lector() {
           </h1>
 
           <p className="text-2xl sm:text-3xl font-semibold text-[#e6edf3] mb-4">
-            Select Anything. Hear It Read Aloud. Fully Offline.
+            Read Anything Aloud. Books Included. Fully Offline.
           </p>
 
           <p className="text-[#8b949e] text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-            The mirror image of Vox. Select text anywhere — an article, a PDF, a pull request — press a global hotkey, and Lector reads it to you. Synthesis runs entirely on your machine with no Python and no cloud, so nothing you select ever leaves your device.
+            The mirror image of Vox. Select text anywhere and press a global hotkey to hear it — or import a book and have it read to you, with the words highlighted as they are spoken. Synthesis runs entirely on your machine with no Python and no cloud, so nothing you read ever leaves your device.
           </p>
 
           <div className="flex flex-wrap gap-3 justify-center mb-10">
@@ -127,7 +167,7 @@ export default function Lector() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
               { val: '181',    label: 'voices to choose from' },
-              { val: '12',     label: 'models, three engine families' },
+              { val: '75k',    label: 'free books, searchable in-app' },
               { val: '470ms',  label: 'to the first spoken word' },
               { val: '0',      label: 'text ever sent to a server' },
             ].map((s) => (
@@ -142,34 +182,44 @@ export default function Lector() {
         </div>
       </section>
 
-      {/* ── Screenshot ────────────────────────────────────────────────────── */}
+      {/* ── Screenshots ───────────────────────────────────────────────────── */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Every Voice, One Click Away</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">A Reader, Not Just a Hotkey</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mx-auto" />
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center">
-            <div className="lg:w-3/5 w-full">
-              <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] overflow-hidden shadow-2xl shadow-amber-950/30 hover:border-amber-500/40 transition-colors duration-300">
-                <img
-                  src="/lector/window.png"
-                  alt="The Lector window: a searchable list of 181 voices on the left with Kokoro expanded and Sarah selected, and a text pane on the right with a Speak button and speed control"
-                  loading="lazy"
-                  className="w-full h-auto block"
-                />
+          <div className="space-y-16">
+            {shots.map((shot, i) => (
+              <div
+                key={shot.src}
+                className={`flex flex-col gap-6 lg:gap-10 items-center ${
+                  i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'
+                }`}
+              >
+                <div className="lg:w-3/5 w-full">
+                  <div className="rounded-2xl border border-[#30363d] bg-[#0d1117] overflow-hidden shadow-2xl shadow-amber-950/30 hover:border-amber-500/40 transition-colors duration-300">
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      loading="lazy"
+                      width={1786}
+                      height={1332}
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                </div>
+                <div className="lg:w-2/5 w-full">
+                  <h3 className="text-2xl font-bold text-[#e6edf3] mb-3">{shot.title}</h3>
+                  {shot.body.map((para) => (
+                    <p key={para.slice(0, 24)} className="text-[#8b949e] leading-relaxed mb-4 last:mb-0">
+                      {para}
+                    </p>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="lg:w-2/5 w-full">
-              <h3 className="text-2xl font-bold text-[#e6edf3] mb-3">The voice browser</h3>
-              <p className="text-[#8b949e] leading-relaxed mb-4">
-                Twelve models, grouped and searchable. Downloaded ones expand into their speakers; the rest show their size and a Get button with a real progress bar.
-              </p>
-              <p className="text-[#8b949e] leading-relaxed">
-                Every voice has a play button that auditions it <em>without</em> switching to it — with 181 of them, having to adopt a voice just to hear it would make the list useless. Type or paste into the pane on the right, or select text in any other app and press the hotkey.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
