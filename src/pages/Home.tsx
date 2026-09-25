@@ -41,6 +41,18 @@ const projects = [
     border: 'hover:border-green-500/60',
   },
   {
+    icon: '\u{1F3DB}',
+    title: 'Filing45',
+    desc: 'Every stock trade disclosed by members of Congress, the fund managers who file 13Fs, and the executive branch \u2014 read straight from the House Clerk, Senate eFD, SEC EDGAR and OGE, with the delay between trade and disclosure made plain. Daily Telegram alerts and a public JSON API.',
+    tags: ['Finance', 'Next.js', 'PostgreSQL', 'Data Engineering'],
+    links: [
+      { label: 'Open Site \u2197', href: 'https://filing45.devops-monk.com', internal: false },
+      { label: 'How It Works \u2197', href: 'https://blog.devops-monk.com/2026/09/filing45-architecture/', internal: false },
+    ],
+    gradient: 'from-indigo-600/20 to-blue-600/20',
+    border: 'hover:border-indigo-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
@@ -113,6 +125,13 @@ const projects = [
 ]
 
 const posts = [
+  {
+    title: 'Filing45: Designing Around Documents That Fight Back',
+    excerpt: 'The architecture behind Filing45 \u2014 four government sources with nothing in common, and a schema built around what each filing can prove.',
+    href: 'https://blog.devops-monk.com/2026/09/filing45-architecture/',
+    date: 'Sep 2026',
+    tag: 'Architecture',
+  },
   {
     title: 'MonkKit: Developer Tools Collection',
     excerpt: 'A curated set of utilities and CLI tools to streamline your development workflow.',
