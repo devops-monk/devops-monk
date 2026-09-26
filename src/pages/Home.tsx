@@ -65,6 +65,18 @@ const projects = [
     border: 'hover:border-sky-500/60',
   },
   {
+    icon: '\u{1F4C4}',
+    title: 'Folio',
+    desc: 'Every PDF tool, private by design — 22 tools that run entirely in the browser, so files never leave the device. Sign with a drawn, typed or uploaded signature, fill forms, merge, split, organize and rotate pages, compress, OCR scans, convert to and from images, watermark, number, crop, password-protect, truly redact and compare PDFs.',
+    tags: ['Web App', 'React', 'TypeScript', 'pdf.js', 'WebAssembly'],
+    links: [
+      { label: 'Open Site ↗', href: 'https://folio.devops-monk.com', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/folio', internal: false },
+    ],
+    gradient: 'from-violet-600/20 to-indigo-600/20',
+    border: 'hover:border-violet-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
