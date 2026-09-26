@@ -53,6 +53,18 @@ const projects = [
     border: 'hover:border-indigo-500/60',
   },
   {
+    icon: '\u{1FAAA}',
+    title: 'Pixport',
+    desc: 'Passport, visa and ID photos for 33 countries, made in the browser — the background is removed on-device, the face is found and cropped to each country’s head-height and eye-line rules in millimetres, and a live checklist flags anything off. Exports the exact-size JPEG or 4×6, A4 and Letter print sheets, plus a photo editor for backgrounds, crops and colour.',
+    tags: ['Web App', 'React', 'TypeScript', 'On-device ML'],
+    links: [
+      { label: 'Open Site ↗', href: 'https://pixport.devops-monk.com', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/pixport', internal: false },
+    ],
+    gradient: 'from-sky-600/20 to-blue-600/20',
+    border: 'hover:border-sky-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
