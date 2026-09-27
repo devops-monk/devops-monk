@@ -77,6 +77,18 @@ const projects = [
     border: 'hover:border-violet-500/60',
   },
   {
+    icon: '\u{1F3B5}',
+    title: 'Aurora Music',
+    desc: 'A free, open-source YouTube Music player for macOS, Windows, Linux and Android, with an Apple Music-style design. Word-synced lyrics with translation, animated cover art, gapless playback with crossfade and a 7-band equaliser, monthly Replay stats, Listen Together, offline downloads and no ads.',
+    tags: ['Desktop App', 'Android', 'Electron', 'React', 'TypeScript', 'Capacitor'],
+    links: [
+      { label: 'Download ↗', href: 'https://aurora.devops-monk.com', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/aurora-music', internal: false },
+    ],
+    gradient: 'from-fuchsia-600/20 to-rose-600/20',
+    border: 'hover:border-fuchsia-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
