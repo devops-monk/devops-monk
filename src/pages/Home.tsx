@@ -89,6 +89,18 @@ const projects = [
     border: 'hover:border-fuchsia-500/60',
   },
   {
+    icon: '\u{1F399}',
+    title: 'VoxStudio',
+    desc: 'A private voice studio that runs entirely on your computer. Speak any script, clone a voice from ten seconds of audio, dub videos into nine languages, transcribe, dictate and narrate whole books, with Kokoro and Chatterbox running locally on the Apple GPU, an NVIDIA GPU or the CPU. No cloud, no accounts and no subscriptions.',
+    tags: ['Desktop App', 'Tauri', 'React', 'Python', 'FastAPI'],
+    links: [
+      { label: 'Open Site ↗', href: 'https://vox-studio.devops-monk.com/', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/vox-studio', internal: false },
+    ],
+    gradient: 'from-cyan-600/20 to-sky-600/20',
+    border: 'hover:border-cyan-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
