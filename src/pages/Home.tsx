@@ -101,6 +101,18 @@ const projects = [
     border: 'hover:border-cyan-500/60',
   },
   {
+    icon: '\u{1F4C4}',
+    title: 'PDF Studio',
+    desc: 'A private PDF workbench for macOS, Windows and Linux. Read, highlight, comment, fill and sign, reorder and split pages, redact for real, protect with AES-256 passwords and make scans searchable with offline OCR. No cloud, no accounts and no telemetry, plus a command-line tool that shares the same engine.',
+    tags: ['Desktop App', 'Electron', 'React', 'TypeScript', 'pdf.js'],
+    links: [
+      { label: 'Open Site ↗', href: 'https://pdf-studio.devops-monk.com/', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/pdf-studio', internal: false },
+    ],
+    gradient: 'from-yellow-500/20 to-amber-600/20',
+    border: 'hover:border-yellow-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
