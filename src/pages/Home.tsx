@@ -113,6 +113,18 @@ const projects = [
     border: 'hover:border-yellow-500/60',
   },
   {
+    icon: '\u{1F4F7}',
+    title: 'Photo Studio',
+    desc: 'A fast, native, layer-based photo editor for macOS, Windows and Linux. Layers and groups, masks, smart objects, layer styles, content-aware fill, the Pen tool, 33 filters and soft proofing, with PSD, PSB, layered TIFF and Paint.NET support. Free and open source, plus a command-line tool that shares the same engine.',
+    tags: ['Desktop App', 'Rust', 'egui', 'wgpu', 'Image Editing'],
+    links: [
+      { label: 'Open Site ↗', href: 'https://photo-studio.devops-monk.com/', internal: false },
+      { label: 'GitHub ↗', href: 'https://github.com/devops-monk/photo-studio', internal: false },
+    ],
+    gradient: 'from-purple-600/20 to-fuchsia-600/20',
+    border: 'hover:border-purple-500/60',
+  },
+  {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
