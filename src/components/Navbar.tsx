@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+const sectionLinks = [
+  { label: 'AI Apps', href: '/#ai' },
+  { label: 'Developer Tools', href: '/#dev-tools' },
+  { label: 'Apps & Platforms', href: '/#apps' },
+]
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
@@ -41,6 +47,11 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             <Link to="/" className={navLinkClass('/')}>Home</Link>
+            {sectionLinks.map((s) => (
+              <a key={s.href} href={s.href} className="px-3 py-2 rounded-md text-sm font-medium text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#161b22] transition-colors duration-200">
+                {s.label}
+              </a>
+            ))}
             <Link
               to="/extensions"
               className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
@@ -100,6 +111,16 @@ export default function Navbar() {
             >
               Home
             </Link>
+            {sectionLinks.map((s) => (
+              <a
+                key={s.href}
+                href={s.href}
+                className="block px-3 py-2 rounded-md text-sm font-medium text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#161b22] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {s.label}
+              </a>
+            ))}
             <Link
               to="/extensions"
               className="block px-3 py-2 rounded-md text-sm font-medium text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#161b22] transition-colors"

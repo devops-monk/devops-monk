@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const skills = [
   'Docker', 'Kubernetes', 'AWS', 'Python', 'TypeScript',
@@ -8,12 +9,41 @@ const skills = [
 
 const projects = [
   {
+    icon: '\u{1FAB6}',
+    title: 'Quill',
+    category: 'ai',
+    desc: 'An AI-native desktop database client for 90+ databases. Ask a question in plain English and Quill reads your schema, writes the SQL, runs it safely, and answers with a table and a chart.',
+    tags: ['Desktop App', 'AI', 'Text-to-SQL', 'Rust', 'Tauri'],
+    links: [
+      { label: 'Open Site \u2197', href: 'https://quill.devops-monk.com/', internal: false },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/quill', internal: false },
+    ],
+    gradient: 'from-purple-600/20 to-indigo-600/20',
+    border: 'hover:border-purple-500/60',
+  },
+  {
+    icon: '\u{1F9ED}',
+    title: 'Waypoint',
+    category: 'ai',
+    desc: 'An honest, private job search copilot for macOS, Windows and Linux. It finds real jobs on company job boards, scores how well you fit using only facts from your profile, and tracks every application. Your data stays on your computer, and AI calls use your own key.',
+    tags: ['Desktop App', 'AI', 'Job Search', 'Privacy'],
+    links: [
+      { label: 'Open Site \u2197', href: 'https://waypoint.devops-monk.com/', internal: false },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/waypoint', internal: false },
+    ],
+    gradient: 'from-emerald-600/20 to-cyan-600/20',
+    border: 'hover:border-emerald-500/60',
+  },
+  {
     icon: '🛠️',
     title: 'MonkKit',
+    category: 'dev-tools',
     desc: 'A curated collection of developer utilities and CLI tools designed to streamline your workflow and dramatically boost productivity in day-to-day DevOps and development tasks.',
     tags: ['Developer Tools', 'CLI', 'Productivity'],
     links: [
       { label: 'Learn More', href: '/monkkit', internal: true },
+      { label: 'Open Site \u2197', href: 'https://tools.devops-monk.com/', internal: false },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/monkkit', internal: false },
     ],
     gradient: 'from-emerald-600/20 to-teal-600/20',
     border: 'hover:border-emerald-500/60',
@@ -21,10 +51,13 @@ const projects = [
   {
     icon: '📈',
     title: 'Share Market Intelligence',
+    category: 'apps',
     desc: 'A real-time stock market analysis dashboard with intelligent insights, portfolio tracking, technical indicators, and market trend visualisation powered by live data feeds.',
     tags: ['Finance', 'Data', 'Dashboard', 'Python'],
     links: [
       { label: 'Learn More', href: '/share-market', internal: true },
+      { label: 'Open Site \u2197', href: 'https://share.devops-monk.com/', internal: false },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/share-market', internal: false },
     ],
     gradient: 'from-blue-600/20 to-cyan-600/20',
     border: 'hover:border-blue-500/60',
@@ -32,6 +65,7 @@ const projects = [
   {
     icon: '🟢',
     title: 'StockMonk Dashboard',
+    category: 'apps',
     desc: 'Live stock intelligence dashboard powered by Reddit buzz, StockTwits sentiment, earnings calendars, and news — with composite buy signals, trending stocks, earnings surprises, and watchlist tracking.',
     tags: ['Finance', 'Live API', 'Dashboard', 'TypeScript'],
     links: [
@@ -43,6 +77,7 @@ const projects = [
   {
     icon: '\u{1F3DB}',
     title: 'Filing45',
+    category: 'apps',
     desc: 'Every stock trade disclosed by members of Congress, the fund managers who file 13Fs, and the executive branch \u2014 read straight from the House Clerk, Senate eFD, SEC EDGAR and OGE, with the delay between trade and disclosure made plain. Daily Telegram alerts and a public JSON API.',
     tags: ['Finance', 'Next.js', 'PostgreSQL', 'Data Engineering'],
     links: [
@@ -55,6 +90,7 @@ const projects = [
   {
     icon: '\u{1FAAA}',
     title: 'Pixport',
+    category: 'apps',
     desc: 'Passport, visa and ID photos for 33 countries, made in the browser — the background is removed on-device, the face is found and cropped to each country’s head-height and eye-line rules in millimetres, and a live checklist flags anything off. Exports the exact-size JPEG or 4×6, A4 and Letter print sheets, plus a photo editor for backgrounds, crops and colour.',
     tags: ['Web App', 'React', 'TypeScript', 'On-device ML'],
     links: [
@@ -67,6 +103,7 @@ const projects = [
   {
     icon: '\u{1F4C4}',
     title: 'Folio',
+    category: 'apps',
     desc: 'Every PDF tool, private by design — 22 tools that run entirely in the browser, so files never leave the device. Sign with a drawn, typed or uploaded signature, fill forms, merge, split, organize and rotate pages, compress, OCR scans, convert to and from images, watermark, number, crop, password-protect, truly redact and compare PDFs.',
     tags: ['Web App', 'React', 'TypeScript', 'pdf.js', 'WebAssembly'],
     links: [
@@ -79,6 +116,7 @@ const projects = [
   {
     icon: '\u{1F3B5}',
     title: 'Aurora Music',
+    category: 'apps',
     desc: 'A free, open-source YouTube Music player for macOS, Windows, Linux and Android, with an Apple Music-style design. Word-synced lyrics with translation, animated cover art, gapless playback with crossfade and a 7-band equaliser, monthly Replay stats, Listen Together, offline downloads and no ads.',
     tags: ['Desktop App', 'Android', 'Electron', 'React', 'TypeScript', 'Capacitor'],
     links: [
@@ -91,6 +129,7 @@ const projects = [
   {
     icon: '\u{1F399}',
     title: 'VoxStudio',
+    category: 'ai',
     desc: 'A private voice studio that runs entirely on your computer. Speak any script, clone a voice from ten seconds of audio, dub videos into nine languages, transcribe, dictate and narrate whole books, with Kokoro and Chatterbox running locally on the Apple GPU, an NVIDIA GPU or the CPU. No cloud, no accounts and no subscriptions.',
     tags: ['Desktop App', 'Tauri', 'React', 'Python', 'FastAPI'],
     links: [
@@ -103,6 +142,7 @@ const projects = [
   {
     icon: '\u{1F4C4}',
     title: 'PDF Studio',
+    category: 'apps',
     desc: 'A private PDF workbench for macOS, Windows and Linux. Read, highlight, comment, fill and sign, reorder and split pages, redact for real, protect with AES-256 passwords and make scans searchable with offline OCR. No cloud, no accounts and no telemetry, plus a command-line tool that shares the same engine.',
     tags: ['Desktop App', 'Electron', 'React', 'TypeScript', 'pdf.js'],
     links: [
@@ -127,10 +167,13 @@ const projects = [
   {
     icon: '🌐',
     title: 'Dynamic DNS Platform',
+    category: 'dev-tools',
     desc: 'A self-hosted dynamic DNS solution for mapping domain names to changing IP addresses — full control, no third-party dependencies, with automatic IP update agents.',
     tags: ['DNS', 'Self-Hosted', 'Infrastructure', 'Networking'],
     links: [
       { label: 'Learn More', href: '/dynamic-dns', internal: true },
+      { label: 'Open Site \u2197', href: 'https://ddns.devops-monk.com/', internal: false },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/ddns-platform', internal: false },
     ],
     gradient: 'from-orange-600/20 to-red-600/20',
     border: 'hover:border-orange-500/60',
@@ -138,6 +181,7 @@ const projects = [
   {
     icon: '🎁',
     title: 'Personalised Gifts',
+    category: 'apps',
     desc: 'A full-stack e-commerce platform for personalised gifts — browse curated gift ideas, customise products, and place orders with a clean, modern storefront built for a seamless shopping experience.',
     tags: ['E-Commerce', 'Full Stack', 'React', 'Node.js'],
     links: [
@@ -150,6 +194,7 @@ const projects = [
   {
     icon: '\u{1FAA3}',
     title: 'Bucketeer',
+    category: 'dev-tools',
     desc: 'An open-source desktop S3 client for macOS, Windows and Linux. Browse buckets, sync folders, and edit encryption, tags, headers, versions and storage class \u2014 without the console or the CLI. Speaks every AWS credential, including IAM Identity Center, with keys held in the OS keychain.',
     tags: ['Desktop App', 'Electron', 'AWS S3', 'TypeScript'],
     links: [
@@ -162,11 +207,13 @@ const projects = [
   {
     icon: '\u{1F39A}',
     title: 'voice-api',
+    category: 'ai',
     desc: 'Self-hosted speech-to-text and text-to-speech on one OpenAI-compatible endpoint \u2014 the same models Vox and Lector run on the desktop, served over HTTP for browser extensions, web pages and automations. Try both live in the browser.',
     tags: ['API', 'Docker', 'LiteLLM', 'Whisper', 'Kokoro'],
     links: [
       { label: 'Try it live', href: '/voice-api', internal: true },
       { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/voice-api', internal: false },
+      { label: 'Open Site \u2197', href: 'https://voice.devops-monk.com/', internal: false },
     ],
     gradient: 'from-teal-600/20 to-cyan-600/20',
     border: 'hover:border-teal-500/60',
@@ -174,6 +221,7 @@ const projects = [
   {
     icon: '\u{1F4D6}',
     title: 'Lector',
+    category: 'ai',
     desc: 'The mirror image of Vox \u2014 a cross-platform desktop text-to-speech app. Select text anywhere, press a global hotkey, and hear it read aloud. 181 voices across three engine families, synthesized entirely on your machine with no Python and no cloud.',
     tags: ['Desktop App', 'Tauri', 'Rust', 'sherpa-onnx'],
     links: [
@@ -186,14 +234,22 @@ const projects = [
   {
     icon: '🎙️',
     title: 'Vox',
+    category: 'ai',
     desc: 'A cross-platform desktop voice-to-text app — press a global hotkey, speak, and the transcribed text is pasted wherever you\'re typing. Runs fully offline via a bundled whisper.cpp model, no cloud API, no audio ever leaves your machine.',
     tags: ['Desktop App', 'Tauri', 'Rust', 'Whisper.cpp'],
     links: [
       { label: 'Learn More', href: '/vox', internal: true },
+      { label: 'GitHub \u2197', href: 'https://github.com/devops-monk/vox', internal: false },
     ],
     gradient: 'from-violet-600/20 to-purple-600/20',
     border: 'hover:border-violet-500/60',
   },
+]
+
+const categories = [
+  { id: 'ai', title: 'AI Apps', desc: 'Private, local-first AI — a database client you can talk to, a job search copilot, and speech and voice tools.' },
+  { id: 'dev-tools', title: 'Developer Tools', desc: 'Utilities, clients and infrastructure for everyday development and DevOps work.' },
+  { id: 'apps', title: 'Apps & Platforms', desc: 'Finance dashboards, PDF and photo tools, music and e-commerce.' },
 ]
 
 const posts = [
@@ -228,6 +284,13 @@ const posts = [
 ]
 
 export default function Home() {
+  const { hash } = useLocation()
+
+  // Sections render after load, so jump to /#ai etc. once they exist
+  useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView()
+  }, [hash])
+
   return (
     <div className="overflow-x-hidden">
 
@@ -366,22 +429,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Projects ──────────────────────────────────────────────────────── */}
-      <section id="projects" className="py-20">
+      {/* ── Projects: AI Apps / Developer Tools / Apps & Platforms ────────── */}
+      <div id="projects" className="scroll-mt-16">
+      {categories.map((c) => (
+      <section key={c.id} id={c.id} className="py-20 scroll-mt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">Projects</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#e6edf3] mb-4">{c.title}</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mx-auto mb-4" />
             <p className="text-[#8b949e] text-lg max-w-xl mx-auto">
-              Things I've built — from developer tools to infrastructure platforms.{' '}
-              <Link to="/extensions" className="text-purple-400 hover:text-purple-300 transition-colors">
-                Browse Chrome extensions →
-              </Link>
+              {c.desc}
+              {c.id === 'dev-tools' && (
+                <>
+                  {' '}
+                  <Link to="/extensions" className="text-purple-400 hover:text-purple-300 transition-colors">
+                    Browse Chrome extensions →
+                  </Link>
+                </>
+              )}
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            {projects.map((p) => (
+            {projects.filter((p) => p.category === c.id).map((p) => (
               <div
                 key={p.title}
                 className={`relative group rounded-2xl border border-[#30363d] bg-[#161b22] p-6 transition-all duration-300 ${p.border} hover:shadow-2xl hover:-translate-y-1 overflow-hidden`}
@@ -402,7 +472,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex flex-wrap gap-x-4 gap-y-2">
                     {p.links.map((link) =>
                       link.internal ? (
                         <Link
@@ -431,6 +501,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      ))}
+      </div>
 
       {/* ── Blog ──────────────────────────────────────────────────────────── */}
       <section id="blog" className="py-20 relative">
