@@ -382,9 +382,6 @@ export default function Home() {
               <div className="absolute -bottom-3 -right-3 bg-[#161b22] border border-[#30363d] rounded-xl px-3 py-2 text-sm font-semibold text-[#e6edf3] shadow-xl">
                 ⚡ DevOps-Monk
               </div>
-              <div className="absolute -top-3 -left-3 bg-[#161b22] border border-purple-500/30 rounded-xl px-3 py-2 text-sm font-semibold text-purple-400 shadow-xl">
-                7+ Projects
-              </div>
             </div>
           </div>
         </div>
