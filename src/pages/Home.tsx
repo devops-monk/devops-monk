@@ -155,6 +155,7 @@ const projects = [
   {
     icon: '\u{1F4F7}',
     title: 'Photo Studio',
+    category: 'apps',
     desc: 'A fast, native, layer-based photo editor for macOS, Windows and Linux. Layers and groups, masks, smart objects, layer styles, content-aware fill, the Pen tool, 33 filters and soft proofing, with PSD, PSB, layered TIFF and Paint.NET support. Free and open source, plus a command-line tool that shares the same engine.',
     tags: ['Desktop App', 'Rust', 'egui', 'wgpu', 'Image Editing'],
     links: [
