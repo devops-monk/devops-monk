@@ -11,7 +11,7 @@ const projects = [
   {
     icon: '\u{1FAB6}',
     title: 'Quill',
-    category: 'ai',
+    category: ['ai', 'dev-tools'],
     desc: 'An AI-native desktop database client for 90+ databases. Ask a question in plain English and Quill reads your schema, writes the SQL, runs it safely, and answers with a table and a chart.',
     tags: ['Desktop App', 'AI', 'Text-to-SQL', 'Rust', 'Tauri'],
     links: [
@@ -24,7 +24,7 @@ const projects = [
   {
     icon: '\u{1F9ED}',
     title: 'Waypoint',
-    category: 'ai',
+    category: ['ai', 'dev-tools'],
     desc: 'An honest, private job search copilot for macOS, Windows and Linux. It finds real jobs on company job boards, scores how well you fit using only facts from your profile, and tracks every application. Your data stays on your computer, and AI calls use your own key.',
     tags: ['Desktop App', 'AI', 'Job Search', 'Privacy'],
     links: [
@@ -449,7 +449,7 @@ export default function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            {projects.filter((p) => p.category === c.id).map((p) => (
+            {projects.filter((p) => [p.category].flat().includes(c.id)).map((p) => (
               <div
                 key={p.title}
                 className={`relative group rounded-2xl border border-[#30363d] bg-[#161b22] p-6 transition-all duration-300 ${p.border} hover:shadow-2xl hover:-translate-y-1 overflow-hidden`}
